@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ROTUM Ecosystem</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #050510;
+            color: white;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 60px 25px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            color: #b58cff;
+            text-shadow: 0 0 20px #8f5cff;
+        }
+
+        .hero p {
+            margin-top: 20px;
+            color: #999;
+        }
+
+        .section {
+            margin-top: 80px;
+        }
+
+        .section h2 {
+            font-size: 2rem;
+            color: #b58cff;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .item {
+            background: linear-gradient(135deg, #0d0d18 0%, #17172c 100%);
+            border: 1px solid #2d2d55;
+            padding: 35px;
+            border-radius: 15px;
+        }
+
+        .item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .item p {
+            color: #aaa;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background: linear-gradient(135deg, #0d0d18 0%, #17172c 100%);
+            border: 1px solid #2d2d55;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            line-height: 2;
+            color: #aaa;
+            margin-top: 30px;
+        }
+
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .metric {
+            background: rgba(13, 13, 24, 0.4);
+            border: 1px solid rgba(45, 45, 85, 0.5);
+            padding: 25px;
+            border-radius: 12px;
+        }
+
+        .metric h3 {
+            color: #b58cff;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .metric p {
+            color: #888;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        footer {
+            margin-top: 100px;
+            text-align: center;
+            padding: 60px 0;
+            border-top: 1px solid #2d2d55;
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 2;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <button class="hamburger" id="hamburger-btn" aria-label="Toggle Menu">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+        </button>
+
+        <nav id="sidebar">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/logo.png" alt="ROTUM Protocol">
+                </a>
+            </div>
+
+            <div class="menu">
+                <a href="litepaper.html">LITEPAPER</a>
+                <a href="tokenomics.html">TOKENOMICS</a>
+                <a href="ecosystem.html">ECOSYSTEM</a>
+                <a href="contribution.html">CONTRIBUTION</a>
+                <a href="leaderboard.html">LEADERBOARD</a>
+                <a href="roadmap.html">ROADMAP</a>
+                <a href="team.html">TEAM</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+
+        <div class="hero">
+            <h1>ROTUM ECOSYSTEM</h1>
+            <p>The core infrastructure components enabling decentralized processing and scalable utility metrics.</p>
+        </div>
+
+        <div class="section">
+            <h2>Core Infrastructure</h2>
+            <div class="grid">
+
+                <div class="item">
+                    <h3>Computing Nodes</h3>
+                    Distributed processing hardware nodes contributing raw transaction validation and automated script
+                    scheduling operations to the core protocol layout.
+                </div>
+
+                <div class="item">
+                    <h3>Ecosystem Engine</h3>
+                    The algorithmic matching layout tracking overall participation, epoch data settlements, and active
+                    seasonal network allocation matrices.
+                </div>
+
+                <div class="item">
+                    <h3>Mini App Hub</h3>
+                    User access point deployed inside Telegram, linking operational interfaces with multi-node setups
+                    and localized statistics cleanly.
+                </div>
+
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Contribution Weighting</h2>
+            <div class="formula-box">
+                Base Hardware Score
+                <br>
+                +
+                <br>
+                Referral Bonus
+                <br>
+                +
+                <br>
+                Loyalty Bonus
+                <br>
+                +
+                <br>
+                Seasonal Multiplier
+                <br><br>
+
+                =
+                <br><br>
+
+                HASH CONTRIBUTION
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Seasonal Rewards</h2>
+            <div class="metrics">
+
+                <div class="metric">
+                    <h3>Contribution Share</h3>
+                    Rewards depend on your percentage contribution.
+                </div>
+
+                <div class="metric">
+                    <h3>Operator Rank</h3>
+                    Higher ranks unlock additional rewards.
+                </div>
+
+                <div class="metric">
+                    <h3>Season Bonus</h3>
+                    Special events increase reward multipliers.
+                </div>
+
+                <div class="metric">
+                    <h3>Loyalty</h3>
+                    Long-term contributors receive additional benefits.
+                </div>
+
+            </div>
+        </div>
+
+        <footer>
+            ROTUM PROTOCOL
+            <br>
+            Built on TON
+            <br>
+            Community First
+        </footer>
+
+    </div>
+
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>

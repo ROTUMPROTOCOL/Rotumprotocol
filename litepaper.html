@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ROTUM Protocol Litepaper v1.1</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #050510;
+            color: #fff;
+            font-family: 'Orbitron', sans-serif;
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 60px 30px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            color: #b58cff;
+            text-shadow: 0 0 20px #8f5cff;
+        }
+
+        .hero p {
+            color: #999;
+            margin-top: 20px;
+        }
+
+        .section {
+            margin-top: 80px;
+        }
+
+        .section h2 {
+            color: #b58cff;
+            margin-bottom: 20px;
+            border-left: 4px solid #8f5cff;
+            padding-left: 15px;
+        }
+
+        .card {
+            background: #0d0d18;
+            border: 1px solid #2d2d55;
+            border-radius: 12px;
+            padding: 30px;
+            margin-top: 20px;
+        }
+
+        .card p {
+            margin-bottom: 15px;
+        }
+
+        .card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .card ul {
+            list-style-type: none;
+            padding-left: 5px;
+        }
+
+        .card ul li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .card ul li::before {
+            content: "•";
+            color: #8f5cff;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .tokenomics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .token {
+            background: #111122;
+            border: 1px solid #333366;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        .token h3 {
+            color: #b58cff;
+            margin-bottom: 10px;
+        }
+
+        .token ul {
+            list-style-type: none;
+            margin-top: 10px;
+        }
+
+        .token ul li {
+            font-size: 0.9rem;
+            color: #ccc;
+            margin-bottom: 5px;
+            padding-left: 15px;
+            position: relative;
+        }
+
+        .token ul li::before {
+            content: "▫";
+            color: #8f5cff;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Token Table Styles */
+        .token-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .token-table th,
+        .token-table td {
+            text-align: left;
+            padding: 12px 15px;
+            border-bottom: 1px solid #2d2d55;
+        }
+
+        .token-table th {
+            color: #b58cff;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .token-table td {
+            color: #e0e0e0;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            font-size: 0.75rem;
+            border-radius: 4px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-left: 10px;
+        }
+
+        .status-completed {
+            background: #1b4d3e;
+            color: #73fcd6;
+        }
+
+        .status-inprogress {
+            background: #4d421b;
+            color: #fce773;
+        }
+
+        .status-planned {
+            background: #2a1b4d;
+            color: #c373fc;
+        }
+
+        .status-vision {
+            background: #222233;
+            color: #aaa;
+        }
+
+        footer {
+            margin-top: 100px;
+            text-align: center;
+            padding: 50px;
+            color: #666;
+            border-top: 1px solid #222;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <button class="hamburger" id="hamburger-btn" aria-label="Toggle Menu">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+        </button>
+
+        <nav id="sidebar">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/logo.png" alt="ROTUM Protocol">
+                </a>
+            </div>
+
+            <div class="menu">
+                <a href="litepaper.html">LITEPAPER</a>
+                <a href="tokenomics.html">TOKENOMICS</a>
+                <a href="ecosystem.html">ECOSYSTEM</a>
+                <a href="contribution.html">CONTRIBUTION</a>
+                <a href="leaderboard.html">LEADERBOARD</a>
+                <a href="roadmap.html">ROADMAP</a>
+                <a href="team.html">TEAM</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+
+        <div class="hero">
+            <h1>ROTUM PROTOCOL</h1>
+            <p>
+                Litepaper v1.1
+                <br>
+                Built on TON
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>Introduction</h2>
+            <div class="card">
+                <p>Rotum Protocol is a community-driven contribution ecosystem built on The Open Network (TON). Unlike
+                    traditional tap-to-earn models, Rotum introduces a contribution-based participation framework where
+                    users actively engage with the ecosystem through participation, collaboration, and long-term
+                    contribution activities.</p>
+                <p>The protocol is designed to reward meaningful ecosystem participation while promoting sustainability,
+                    transparency, and digital ownership. Through RTM, the native utility token of the ecosystem,
+                    participants can access various features including boosts, contribution enhancements, achievement
+                    systems, and future ecosystem services.</p>
+                <p>Rotum Protocol aims to create a sustainable participation economy where contributors are recognized,
+                    rewarded, and empowered within a transparent digital ecosystem.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Vision</h2>
+            <div class="card">
+                <p>Our vision is to build a decentralized participation ecosystem where user contributions create
+                    measurable value and long-term digital identity.</p>
+                <p>Rotum Protocol seeks to evolve beyond traditional reward systems by combining contribution mechanics,
+                    achievement systems, digital ownership, and blockchain infrastructure to create an ecosystem
+                    centered around participation, reputation, and community growth.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>RTM Token Overview</h2>
+            <div class="card">
+                <table class="token-table">
+                    <thead>
+                        <tr>
+                            <th>Specification</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Token Name</td>
+                            <td>Rotum Token</td>
+                        </tr>
+                        <tr>
+                            <td>Symbol</td>
+                            <td>RTM</td>
+                        </tr>
+                        <tr>
+                            <td>Blockchain</td>
+                            <td>TON</td>
+                        </tr>
+                        <tr>
+                            <td>Total Supply</td>
+                            <td>10,000,000 RTM</td>
+                        </tr>
+                        <tr>
+                            <td>Additional Minting</td>
+                            <td>No</td>
+                        </tr>
+                        <tr>
+                            <td>Token Type</td>
+                            <td>Utility Token</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>RTM functions as the primary utility asset of the Rotum ecosystem and is designed to support
+                    ecosystem participation, contributor incentives, digital ownership, and future protocol services.
+                </p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Tokenomics Structure</h2>
+            <div class="tokenomics">
+
+                <div class="token">
+                    <h3>Community Distribution — 60%</h3>
+                    Reserved for:
+                    <ul>
+                        <li>Contributor rewards</li>
+                        <li>Seasonal reward pools</li>
+                        <li>Community campaigns</li>
+                        <li>Participation incentives</li>
+                    </ul>
+                </div>
+
+                <div class="token">
+                    <h3>Ecosystem Treasury — 15%</h3>
+                    Reserved for:
+                    <ul>
+                        <li>Ecosystem expansion</li>
+                        <li>Infrastructure support</li>
+                        <li>Security improvements</li>
+                        <li>Strategic reserves</li>
+                    </ul>
+                </div>
+
+                <div class="token">
+                    <h3>Core Development — 10%</h3>
+                    Reserved for:
+                    <ul>
+                        <li>Product development</li>
+                        <li>Technical operations</li>
+                        <li>Infrastructure maintenance</li>
+                        <li>Future protocol expansion</li>
+                    </ul>
+                </div>
+
+                <div class="token">
+                    <h3>Growth & Partnerships — 10%</h3>
+                    Reserved for:
+                    <ul>
+                        <li>Strategic partnerships</li>
+                        <li>Community growth</li>
+                        <li>Marketing initiatives</li>
+                        <li>Ecosystem adoption</li>
+                    </ul>
+                </div>
+
+                <div class="token">
+                    <h3>Team & Advisors — 5%</h3>
+                    Reserved for:
+                    <ul>
+                        <li>Long-term team incentives</li>
+                        <li>Advisory support</li>
+                        <li>Ecosystem leadership</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Ecosystem Utilities</h2>
+            <div class="card">
+                <p>RTM serves multiple functions within the Rotum ecosystem:</p>
+                <ul>
+                    <li>Contribution boosts</li>
+                    <li>Multiplier enhancements</li>
+                    <li>Locking and participation rewards</li>
+                    <li>Seasonal ecosystem activities</li>
+                    <li>Achievement systems</li>
+                    <li>Contributor recognition</li>
+                    <li>Future blockchain services</li>
+                    <li>Governance participation</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Roadmap</h2>
+
+            <div class="card">
+                <h3>PHASE 1 — FOUNDATION & RESEARCH <span class="status-badge status-completed">Completed</span></h3>
+                <br>
+                <ul>
+                    <li>Protocol concept and architecture</li>
+                    <li>RTM tokenomics design</li>
+                    <li>Fixed supply model (10,000,000 RTM)</li>
+                    <li>Contribution economy framework</li>
+                    <li>Telegram Mini App prototype</li>
+                    <li>Community formation and branding</li>
+                    <li>Website and Litepaper release</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>PHASE 2 — ECOSYSTEM DEVELOPMENT <span class="status-badge status-inprogress">In Progress</span></h3>
+                <br>
+                <ul>
+                    <li>Telegram Mini App development</li>
+                    <li>Contribution engine implementation</li>
+                    <li>User dashboard and analytics</li>
+                    <li>Referral and growth system</li>
+                    <li>RTM utility integration</li>
+                    <li>Boost and multiplier system</li>
+                    <li>RTM lock mechanics</li>
+                    <li>Seasonal contribution framework</li>
+                    <li>Security and infrastructure optimization</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>PHASE 3 — PUBLIC BETA & COMMUNITY EXPANSION <span class="status-badge status-planned">Planned</span>
+                </h3>
+                <br>
+                <ul>
+                    <li>Public Beta launch</li>
+                    <li>Genesis contributor campaign</li>
+                    <li>Seasonal reward distribution</li>
+                    <li>Contribution leaderboards</li>
+                    <li>Achievement progression system</li>
+                    <li>Community growth initiatives</li>
+                    <li>Strategic partnerships</li>
+                    <li>Ecosystem optimization</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>PHASE 4 — ACHIEVEMENTS & DIGITAL OWNERSHIP <span class="status-badge status-planned">Future</span>
+                </h3>
+                <br>
+                <ul>
+                    <li>Achievement NFT framework</li>
+                    <li>Soulbound contributor badges</li>
+                    <li>Genesis contributor collection</li>
+                    <li>Seasonal achievement rewards</li>
+                    <li>Contributor profile system</li>
+                    <li>Long-term participation incentives</li>
+                    <li>Digital achievement history</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>PHASE 5 — BLOCKCHAIN INFRASTRUCTURE <span class="status-badge status-vision">Vision</span></h3>
+                <br>
+                <ul>
+                    <li>RTM smart contract deployment</li>
+                    <li>On-chain staking and locking</li>
+                    <li>Achievement NFT contracts</li>
+                    <li>Contributor identity system</li>
+                    <li>Community governance mechanisms</li>
+                    <li>Protocol security and audits</li>
+                    <li>Ecosystem expansion opportunities</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Long-Term Vision</h2>
+            <div class="card">
+                <p>Rotum Protocol aims to evolve from a contribution-based Telegram ecosystem into a sustainable
+                    participation, achievement, and digital ownership ecosystem built on TON.</p>
+                <p>By combining contribution systems, achievement mechanics, digital identity, and blockchain
+                    infrastructure, Rotum seeks to create long-term value for participants while contributing to the
+                    growth of the TON ecosystem.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Disclaimer</h2>
+            <div class="card">
+                <p>Rotum Protocol is currently under active development. Participation in the ecosystem does not
+                    guarantee financial returns or future market value. Features, token utilities, and ecosystem
+                    mechanics may evolve over time as the protocol develops.</p>
+                <p>Nothing contained within this document constitutes financial, investment, or legal advice.
+                    Participants should conduct their own research before engaging with any digital assets or blockchain
+                    ecosystems.</p>
+            </div>
+        </div>
+
+        <footer>
+            ROTUM PROTOCOL
+            <br>
+            Fixed Supply: 10,000,000 RTM
+            <br>
+            Built on TON
+        </footer>
+
+    </div>
+
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>

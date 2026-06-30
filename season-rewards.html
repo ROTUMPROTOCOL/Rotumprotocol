@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ROTUM Protocol | Seasonal Rewards</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #050510;
+            color: #fff;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 50px 25px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            color: #b58cff;
+            text-shadow: 0 0 25px rgba(181, 140, 255, .4);
+        }
+
+        .hero p {
+            margin-top: 20px;
+            color: #888;
+            font-size: 1.1rem;
+        }
+
+        .section {
+            margin-top: 60px;
+        }
+
+        .section h2 {
+            font-size: 2rem;
+            color: #b58cff;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card {
+            background: linear-gradient(135deg, rgba(13, 13, 24, 0.6) 0%, rgba(45, 45, 85, 0.2) 100%);
+            border: 1px solid #2d2d55;
+            border-radius: 15px;
+            padding: 30px;
+            font-size: 1rem;
+            color: #aaa;
+            line-height: 1.7;
+        }
+
+        .example {
+            background: rgba(13, 13, 24, 0.4);
+            border: 1px solid rgba(45, 45, 85, 0.5);
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            line-height: 1.8;
+            color: #888;
+        }
+
+        .example b {
+            color: #fff;
+        }
+
+        .warning {
+            margin-top: 30px;
+            border-left: 3px solid #ffaa00;
+            background: rgba(255, 170, 0, 0.05);
+            padding: 20px 30px;
+            border-radius: 0 15px 15px 0;
+            font-size: 0.95rem;
+            color: #ffaa00;
+            line-height: 1.6;
+        }
+
+        footer {
+            margin-top: 100px;
+            text-align: center;
+            padding: 40px 0;
+            color: #555;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(45, 45, 85, 0.3);
+            line-height: 1.8;
+        }
+
+        @media(max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <button class="hamburger" id="hamburger-btn" aria-label="Toggle Menu">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+        </button>
+
+        <nav id="sidebar">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/logo.png" alt="ROTUM Protocol">
+                </a>
+            </div>
+
+            <div class="menu">
+                <a href="litepaper.html">LITEPAPER</a>
+                <a href="tokenomics.html">TOKENOMICS</a>
+                <a href="ecosystem.html">ECOSYSTEM</a>
+                <a href="contribution.html">CONTRIBUTION</a>
+                <a href="leaderboard.html">LEADERBOARD</a>
+                <a href="roadmap.html">ROADMAP</a>
+                <a href="team.html">TEAM</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+
+        <div class="hero">
+            <h1>SEASONAL REWARDS</h1>
+            <p>Ecosystem calculation models, distribution scenarios and transparent framework indicators.</p>
+        </div>
+
+        <div class="section">
+            <h2>Distribution Logic</h2>
+            <div class="card">
+                Seasonal rewards are calculated dynamically at the end of each operational block phase. The total pool
+                size changes over time depending on active contributions and node uptime parameters.
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Calculation Example</h2>
+            <div class="example">
+                Season Pool:
+                <b>1,000,000 RTM</b>
+
+                <br><br>
+
+                Network Contribution:
+                <b>100,000 TH/s</b>
+
+                <br><br>
+
+                Your Contribution:
+                <b>1,000 TH/s</b>
+
+                <br><br>
+
+                Contribution Share:
+                <b>1%</b>
+
+                <br><br>
+
+                Estimated Reward Share:
+                <b>10,000 RTM</b>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Transparency</h2>
+            <div class="card">
+                All seasonal distributions will be publicly verifiable. Reward calculations are based on predefined
+                rules and contribution metrics.
+            </div>
+
+            <div class="warning">
+                Participation in Rotum Protocol does not guarantee financial returns. Rewards depend on ecosystem
+                activity, participation and seasonal distribution rules.
+            </div>
+        </div>
+
+        <footer>
+            ROTUM PROTOCOL
+            <br><br>
+            Seasonal Reward Framework v1
+            <br>
+            Built on TON
+        </footer>
+
+    </div>
+
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>

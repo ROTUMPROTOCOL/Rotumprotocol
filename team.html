@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+    <title>ROTUM Protocol | Team</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #050510;
+            color: white;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            color: #b58cff;
+            text-shadow: 0 0 20px rgba(181, 140, 255, .4);
+        }
+
+        .hero p {
+            margin-top: 20px;
+            color: #888;
+        }
+
+        .section {
+            margin-top: 60px;
+        }
+
+        .section h2 {
+            font-size: 2rem;
+            color: #b58cff;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: linear-gradient(135deg, rgba(13, 13, 24, 0.6) 0%, rgba(45, 45, 85, 0.2) 100%);
+            border: 1px solid #2d2d55;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+
+        .card p {
+            color: #b58cff;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .card div {
+            color: #aaa;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .values {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .value {
+            background: rgba(13, 13, 24, 0.4);
+            border: 1px solid rgba(45, 45, 85, 0.5);
+            padding: 30px;
+            border-radius: 15px;
+        }
+
+        .value h3 {
+            color: #b58cff;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .value p {
+            color: #888;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        footer {
+            margin-top: 100px;
+            text-align: center;
+            padding: 40px 0;
+            color: #555;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(45, 45, 85, 0.3);
+            line-height: 1.8;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <button class="hamburger" id="hamburger-btn" aria-label="Toggle Menu">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+        </button>
+
+        <nav id="sidebar">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/logo.png" alt="ROTUM Protocol">
+                </a>
+            </div>
+
+            <div class="menu">
+                <a href="litepaper.html">LITEPAPER</a>
+                <a href="tokenomics.html">TOKENOMICS</a>
+                <a href="ecosystem.html">ECOSYSTEM</a>
+                <a href="contribution.html">CONTRIBUTION</a>
+                <a href="leaderboard.html">LEADERBOARD</a>
+                <a href="roadmap.html">ROADMAP</a>
+                <a href="team.html">TEAM</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+
+        <div class="hero">
+            <h1>OUR TEAM</h1>
+            <p>The developers, protocol engineers, and ecosystem architects behind the core decentralized framework
+                layout.</p>
+        </div>
+
+        <div class="section">
+            <h2>Core Architects</h2>
+            <div class="grid">
+
+                <div class="card">
+                    <h3>Alex Rivera</h3>
+                    <p>Core Architecture</p>
+                    <div>Focuses on distributed hardware communication frameworks, network metrics optimization
+                        intervals, and secure data pipelines.</div>
+                </div>
+
+                <div class="card">
+                    <h3>Marcus Chen</h3>
+                    <p>Protocol Engineering</p>
+                    <div>Manages backend node synchronization processes, telemetry logic tracking metrics, and scalable
+                        API route distributions.</div>
+                </div>
+
+                <div class="card">
+                    <h3>Elena Rostova</h3>
+                    <p>Ecosystem Lead</p>
+                    <div>Coordinates community distribution logic setups, partner integrations, and ongoing framework
+                        transition plans cleanly.</div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Our Values</h2>
+            <div class="values">
+
+                <div class="value">
+                    <h3>Transparency</h3>
+                    <p>Fixed supply, public tokenomics and open communication.</p>
+                </div>
+
+                <div class="value">
+                    <h3>Sustainability</h3>
+                    <p>Long-term ecosystem growth through balanced rewards.</p>
+                </div>
+
+                <div class="value">
+                    <h3>Community</h3>
+                    <p>Community-first development and participation.</p>
+                </div>
+
+                <div class="value">
+                    <h3>Innovation</h3>
+                    <p>Building the next generation of contribution systems.</p>
+                </div>
+
+            </div>
+        </div>
+
+        <footer>
+            ROTUM PROTOCOL
+            <br><br>
+            Built on TON
+            <br>
+            Fixed Supply: 100,000,000 RTM
+        </footer>
+
+    </div>
+
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>
