@@ -3,129 +3,66 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ROTUM Protocol | FAQ</title>
-
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;500;700&display=swap" rel="stylesheet">
-
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
     <link rel="stylesheet" href="css/style.css">
-
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background: #050510;
-            color: white;
-            font-family: 'Orbitron', sans-serif;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1000px;
-            margin: auto;
-        }
-
-        .hero {
-            text-align: center;
-            padding: 100px 0 70px;
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            color: #b58cff;
-            text-shadow: 0 0 20px rgba(181, 140, 255, .4);
-        }
-
-        .hero p {
-            color: #888;
-            margin-top: 20px;
-        }
-
         .faqs {
-            margin-top: 20px;
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 16px;
         }
 
-        .item {
-            background: linear-gradient(135deg, rgba(13, 13, 24, 0.6) 0%, rgba(45, 45, 85, 0.2) 100%);
-            border: 1px solid #2d2d55;
-            border-radius: 12px;
+        .faq-item {
+            background: linear-gradient(155deg, var(--bg-card) 0%, rgba(20, 18, 38, 0.5) 100%);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
             overflow: hidden;
-            transition: all 0.3s ease;
+            transition: border-color 0.25s ease;
         }
 
-        .question {
-            padding: 25px 30px;
-            font-size: 1.1rem;
+        .faq-item:hover {
+            border-color: var(--line-strong);
+        }
+
+        .faq-question {
+            padding: 22px 26px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             cursor: pointer;
             user-select: none;
-            font-weight: 500;
-            letter-spacing: 0.5px;
+            font-family: var(--font-head);
+            font-weight: 600;
+            font-size: 1rem;
         }
 
-        .question:hover {
-            background: rgba(181, 140, 255, 0.03);
-        }
-
-        .plus {
-            color: #b58cff;
+        .faq-plus {
+            color: var(--cyan);
             font-size: 1.4rem;
             transition: transform 0.3s ease;
+            flex-shrink: 0;
+            margin-left: 16px;
         }
 
-        .answer {
+        .faq-answer {
             max-height: 0;
             overflow: hidden;
-            padding: 0 30px;
-            color: #aaa;
-            font-size: 0.95rem;
-            line-height: 1.6;
+            padding: 0 26px;
+            font-size: 0.92rem;
+            line-height: 1.7;
             transition: all 0.3s cubic-bezier(0, 1, 0, 1);
         }
 
-        .item.active .answer {
-            max-height: 1000px;
-            padding: 5px 30px 30px 30px;
+        .faq-item.active .faq-answer {
+            max-height: 600px;
+            padding: 0 26px 24px;
             transition: all 0.3s cubic-bezier(1, 0, 1, 0);
         }
 
-        .item.active .plus {
+        .faq-item.active .faq-plus {
             transform: rotate(45deg);
-        }
-
-        footer {
-            margin-top: 120px;
-            text-align: center;
-            padding: 40px 0;
-            color: #555;
-            font-size: 0.9rem;
-            border-top: 1px solid rgba(45, 45, 85, 0.3);
-            line-height: 1.8;
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .question {
-                font-size: 1rem;
-                padding: 20px;
-            }
-
-            .item.active .answer {
-                padding: 5px 20px 20px 20px;
-            }
         }
     </style>
 </head>
@@ -133,142 +70,93 @@
 <body>
 
     <header>
-        <button class="hamburger" id="hamburger-btn" aria-label="Toggle Menu">
-            <span class="line"></span>
-            <span class="line"></span>
-            <span class="line"></span>
-        </button>
-
-        <nav id="sidebar">
-            <div class="logo">
-                <a href="index.html">
-                    <img src="assets/logo.png" alt="ROTUM Protocol">
-                </a>
-            </div>
-
-            <div class="menu">
-                <a href="litepaper.html">LITEPAPER</a>
-                <a href="tokenomics.html">TOKENOMICS</a>
-                <a href="ecosystem.html">ECOSYSTEM</a>
-                <a href="contribution.html">CONTRIBUTION</a>
-                <a href="leaderboard.html">LEADERBOARD</a>
-                <a href="roadmap.html">ROADMAP</a>
-                <a href="team.html">TEAM</a>
-            </div>
-        </nav>
+        <div class="navbar">
+            <a href="index.html" class="brand">
+                <img src="assets/logo.svg" alt="ROTUM">
+                <span>ROTUM</span>
+            </a>
+            <button class="hamburger" id="hamburger-btn" aria-label="Toggle menu" aria-expanded="false">
+                <span class="line"></span><span class="line"></span><span class="line"></span>
+            </button>
+            <ul class="menu" id="menu">
+                <li><a href="litepaper.html">Litepaper</a></li>
+                <li><a href="tokenomics.html">Tokenomics</a></li>
+                <li><a href="ecosystem.html">Ecosystem</a></li>
+                <li><a href="contribution.html">Contribution</a></li>
+                <li><a href="leaderboard.html">Leaderboard</a></li>
+                <li><a href="roadmap.html">Roadmap</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="https://t.me/rotumprotocolbot" target="_blank" class="launch-btn">Launch App</a></li>
+            </ul>
+        </div>
     </header>
 
-    <div class="container">
-
-        <div class="hero">
-            <h1>FAQ</h1>
-            <p>Frequently asked questions about Rotum Protocol architecture, rules, and reward frameworks.</p>
-        </div>
-
-        <div class="faqs">
-
-            <div class="item">
-                <div class="question">
-                    What is Rotum Protocol?
-                    <span class="plus">+</span>
-                </div>
-
-                <div class="answer">
-                    Rotum Protocol is a community-driven contribution ecosystem built on The Open Network (TON). Moving
-                    beyond simple tap-to-earn models, Rotum utilizes a contribution-based framework where users build
-                    long-term digital identity through active ecosystem participation.
-                </div>
-            </div>
-
-            <div class="item">
-                <div class="question">
-                    What is the total supply of RTM?
-                    <span class="plus">+</span>
-                </div>
-
-                <div class="answer">
-                    The total maximum supply is fixed at 10,000,000 RTM tokens. Additional token minting is permanently
-                    disabled.
-                </div>
-            </div>
-
-            <div class="item">
-                <div class="question">
-                    What are the utilities of the RTM token?
-                    <span class="plus">+</span>
-                </div>
-
-                <div class="answer">
-                    RTM acts as the core utility asset within the ecosystem. It is used for contribution boosts,
-                    multiplier enhancements, locking rewards, participating in seasonal ecosystem events, achievement
-                    progression, and community governance.
-                </div>
-            </div>
-
-            <div class="item">
-                <div class="question">
-                    How does the contribution and achievement system work?
-                    <span class="plus">+</span>
-                </div>
-
-                <div class="answer">
-                    Users interact with the platform primarily via the Telegram Mini App. As development progresses into
-                    later phases, user participation and seasonal achievements will be verified via on-chain smart
-                    contracts, utilizing achievement NFT systems and Soulbound contributor badges to create permanent
-                    digital identity metrics.
-                </div>
-            </div>
-
-            <div class="item">
-                <div class="question">
-                    How are rewards distributed?
-                    <span class="plus">+</span>
-                </div>
-
-                <div class="answer">
-                    60% of the total RTM allocation is dedicated directly to the community. Rewards are distributed
-                    through seasonal campaigns, contributor pools, and participation incentives based on objective
-                    engagement tracking.
-                </div>
-            </div>
-
-            <div class="item">
-                <div class="question">
-                    Are rewards guaranteed?
-                    <span class="plus">+</span>
-                </div>
-
-                <div class="answer">
-                    No. Rotum Protocol is under active development. Ecosystem participation does not guarantee financial
-                    returns, profits, or future market value. Nothing within our literature represents legal, financial,
-                    or investment advice.
-                </div>
-            </div>
-
-        </div>
-
-        <footer>
-            ROTUM PROTOCOL
-            <br>
-            Fixed Supply: 10,000,000 RTM
-            <br>
-            Built on TON
-        </footer>
-
+    <div class="hero">
+        <span class="eyebrow">Answers</span>
+        <h1>FAQ</h1>
+        <p>Frequently asked questions about Rotum Protocol architecture, rules, and reward frameworks.</p>
     </div>
 
+    <div class="container section" style="margin-top:20px; max-width:820px;">
+        <div class="faqs">
+
+            <div class="faq-item">
+                <div class="faq-question">What is Rotum Protocol?<span class="faq-plus">+</span></div>
+                <div class="faq-answer">Rotum Protocol is a community-driven contribution ecosystem built on The Open
+                    Network (TON). Moving beyond simple tap-to-earn models, Rotum utilizes a contribution-based
+                    framework where users build long-term digital identity through active ecosystem participation.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">What is the total supply of RTM?<span class="faq-plus">+</span></div>
+                <div class="faq-answer">The total maximum supply is fixed at 1,000,000 RTM tokens. Additional token
+                    minting is permanently disabled.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">What are the utilities of the RTM token?<span class="faq-plus">+</span></div>
+                <div class="faq-answer">RTM acts as the core utility asset within the ecosystem. It is used for
+                    contribution boosts, multiplier enhancements, locking rewards, participating in seasonal ecosystem
+                    events, achievement progression, and community governance.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">How does the contribution and achievement system work?<span
+                        class="faq-plus">+</span></div>
+                <div class="faq-answer">Users interact with the platform primarily via the Telegram Mini App. As
+                    development progresses into later phases, user participation and seasonal achievements will be
+                    verified via on-chain smart contracts, utilizing achievement NFT systems and Soulbound contributor
+                    badges to create permanent digital identity metrics.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">How are rewards distributed?<span class="faq-plus">+</span></div>
+                <div class="faq-answer">60% of the total RTM allocation is dedicated directly to the community. Rewards
+                    are distributed through seasonal campaigns, contributor pools, and participation incentives based on
+                    objective engagement tracking.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Are rewards guaranteed?<span class="faq-plus">+</span></div>
+                <div class="faq-answer">No. Rotum Protocol is under active development. Ecosystem participation does not
+                    guarantee financial returns, profits, or future market value. Nothing within our literature
+                    represents legal, financial, or investment advice.</div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <strong>ROTUM PROTOCOL</strong><br>
+        Fixed Supply: 1,000,000 RTM · Built on TON
+    </footer>
+
     <script>
-        document.querySelectorAll(".question")
-            .forEach(question => {
-                question.onclick = () => {
-                    question.parentElement
-                        .classList.toggle("active");
-                }
-            });
+        document.querySelectorAll(".faq-question").forEach(q => {
+            q.addEventListener("click", () => q.parentElement.classList.toggle("active"));
+        });
     </script>
-
     <script src="js/script.js"></script>
-
 </body>
 
 </html>

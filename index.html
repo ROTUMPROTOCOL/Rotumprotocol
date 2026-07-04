@@ -4,245 +4,187 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ROTUM PROTOCOL</title>
+    <title>ROTUM Protocol | Distributed Contribution on TON</title>
+    <meta name="description"
+        content="Rotum Protocol is a decentralized contribution ecosystem built on TON, turning verified participation into ecosystem rewards.">
 
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght=300;500;700&display=swap" rel="stylesheet">
-
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
     <header>
-        <button class="hamburger" id="hamburger-btn" aria-label="Toggle Menu">
-            <span class="line"></span>
-            <span class="line"></span>
-            <span class="line"></span>
-        </button>
-
-        <nav id="sidebar">
-            <div class="menu">
-                <a href="litepaper.html">LITEPAPER</a>
-                <a href="tokenomics.html">TOKENOMICS</a>
-                <a href="ecosystem.html">ECOSYSTEM</a>
-                <a href="contribution.html">CONTRIBUTION</a>
-                <a href="leaderboard.html">LEADERBOARD</a>
-                <a href="roadmap.html">ROADMAP</a>
-                <a href="team.html">TEAM</a>
-            </div>
-
-            <a href="https://t.me/rotumprotocolbot" target="_blank" class="launch-btn">
-                LAUNCH APP
+        <div class="navbar">
+            <a href="index.html" class="brand">
+                <img src="assets/logo.png" alt="ROTUM">
+                <span>ROTUM</span>
             </a>
-        </nav>
+
+            <button class="hamburger" id="hamburger-btn" aria-label="Toggle menu" aria-expanded="false">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+            </button>
+
+            <ul class="menu" id="menu">
+                <li><a href="litepaper.html">Litepaper</a></li>
+                <li><a href="tokenomics.html">Tokenomics</a></li>
+                <li><a href="ecosystem.html">Ecosystem</a></li>
+                <li><a href="contribution.html">Contribution</a></li>
+                <li><a href="leaderboard.html">Leaderboard</a></li>
+                <li><a href="roadmap.html">Roadmap</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="https://t.me/rotumprotocolbot" target="_blank" class="launch-btn">Launch App</a></li>
+            </ul>
+        </div>
     </header>
 
-    <div class="center-logo-container">
-        <a href="index.html" class="main-logo-link">
-            <div class="logo-wrapper">
-                <img src="assets/logo.png" alt="ROTUM Protocol" class="huge-logo">
-                <div class="logo-glow-effect"></div>
-            </div>
-            <div class="rtm-subtext">
-                <img src="assets/favicon.ico" alt="R" class="favicon-inline">
-                <span>TM</span>
-            </div>
-        </a>
-    </div>
-
     <section class="hero">
-
         <div class="glow"></div>
-
-        <h1>
-            Powering the Future of Distributed Contribution on TON
-        </h1>
-
+        <span class="eyebrow">Built on TON</span>
+        <h1>Powering the future of<br><span class="accent">distributed contribution</span></h1>
         <p>
-            Rotum Protocol is a decentralized contribution ecosystem built on TON,
-            enabling participants to contribute computational power, ecosystem
-            activity, and community engagement through seasonal participation
-            programs. Contributors accumulate Contribution Power, progress through
-            network ranks, and earn ecosystem rewards based on their verified
-            participation and impact.
+            Rotum Protocol is a decentralized contribution ecosystem on TON. Participants build Contribution
+            Power through verified ecosystem activity, progress through network ranks, and earn seasonal
+            rewards based on their impact — not luck.
         </p>
-
         <div class="buttons">
-
-            <a href="app.html" target="_blank">
-                <button>
-                    PREVIEW
-                </button>
-            </a>
-
-            <a href="litepaper.html">
-                <button class="secondary">
-                    Litepaper
-                </button>
-            </a>
-
+            <a href="app.html"><button>Preview Dashboard</button></a>
+            <a href="litepaper.html"><button class="secondary">Read Litepaper</button></a>
         </div>
-
     </section>
 
-    <section class="live-network">
+    <section class="container section">
+        <div class="section-head" style="text-align:center;">
+            <span class="eyebrow">Live Readout</span>
+            <h2>Rotum Network</h2>
+        </div>
 
-        <h2>ROTUM NETWORK</h2>
+        <div class="grid cols-3">
+            <div class="stat">
+                <span class="stat-label">Network Hash Power</span>
+                <span class="stat-value" id="network">0</span>
+            </div>
+            <div class="stat">
+                <span class="stat-label">Operators</span>
+                <span class="stat-value" id="operators">0</span>
+            </div>
+            <div class="stat">
+                <span class="stat-label">Season Pool</span>
+                <span class="stat-value" id="season">0</span>
+            </div>
+        </div>
 
-        <div class="stats-grid">
+        <div class="card" style="margin-top:22px;">
+            <h3
+                style="font-size:1rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--cyan); margin-bottom:18px;">
+                Live Network Feed</h3>
+            <div id="network-feed" class="mono"
+                style="min-height:220px; font-size:0.9rem; display:flex; flex-direction:column; gap:10px; color:var(--muted);">
+            </div>
+        </div>
+    </section>
 
+    <section class="container section" id="about">
+        <div class="section-head" style="text-align:center;">
+            <span class="eyebrow">The Protocol</span>
+            <h2>What is Rotum?</h2>
+            <p class="lede" style="margin-inline:auto;">
+                Rotum introduces a decentralized contribution network where participants strengthen ecosystem
+                growth and receive rewards through transparent, seasonal distribution mechanisms — every
+                contribution is measured, weighted, and accounted for.
+            </p>
+        </div>
+
+        <div class="grid cols-4">
             <div class="card">
-                <span>HASH CONTRIBUTION</span>
-                <h3 id="contribution">0</h3>
+                <span class="stat-label mono">Total Supply</span>
+                <h3 style="margin-top:8px;">1M RTM</h3>
             </div>
-
             <div class="card">
-                <span>NETWORK</span>
-                <h3 id="network">0</h3>
+                <span class="stat-label mono">Blockchain</span>
+                <h3 style="margin-top:8px;">TON</h3>
             </div>
-
             <div class="card">
-                <span>OPERATORS</span>
-                <h3 id="operators">0</h3>
+                <span class="stat-label mono">Minting</span>
+                <h3 style="margin-top:8px;">Fixed</h3>
             </div>
-
             <div class="card">
-                <span>SEASON POOL</span>
-                <h3 id="season">0</h3>
+                <span class="stat-label mono">Community</span>
+                <h3 style="margin-top:8px;">60%</h3>
             </div>
-
-        </div>
-
-        <div class="feed">
-
-            <h3>LIVE NETWORK FEED</h3>
-
-            <div id="network-feed">
-
-            </div>
-
-        </div>
-
-    </section>
-
-    <script src="js/script.js"></script>
-
-    <section id="about">
-
-        <h2>What is Rotum?</h2>
-
-        <p>
-            Rotum Protocol introduces a decentralized contribution
-            network where participants contribute to ecosystem growth
-            and receive rewards through seasonal distribution mechanisms.
-        </p>
-
-    </section>
-
-    <section id="stats">
-
-        <div class="card">
-            <span>Total Supply</span>
-            <h3>10M RTM</h3>
-        </div>
-
-        <div class="card">
-            <span>Blockchain</span>
-            <h3>TON</h3>
-        </div>
-
-        <div class="card">
-            <span>Minting</span>
-            <h3>Fixed</h3>
-        </div>
-
-        <div class="card">
-            <span>Community</span>
-            <h3>60%</h3>
-        </div>
-
-    </section>
-
-    <section id="tokenomics">
-
-        <h2>Token Distribution</h2>
-
-        <div class="token-grid">
-
-            <div class="token-card">
-                <h3>60%</h3>
-                <p>Community Rewards</p>
-            </div>
-
-            <div class="token-card">
-                <h3>15%</h3>
-                <p>Ecosystem Treasury</p>
-            </div>
-
-            <div class="token-card">
-                <h3>10%</h3>
-                <p>Liquidity</p>
-            </div>
-
-            <div class="token-card">
-                <h3>10%</h3>
-                <p>Team & Development</p>
-            </div>
-
-            <div class="token-card">
-                <h3>5%</h3>
-                <p>Marketing</p>
-            </div>
-
         </div>
     </section>
 
-    <section id="roadmap">
-
-        <h2>Roadmap</h2>
-
-        <div class="timeline">
-
-            <div class="phase">
-                <h3>Phase 1</h3>
-                <p>Protocol Design</p>
-                <p>Website</p>
-                <p>Community</p>
-            </div>
-
-            <div class="phase">
-                <h3>Phase 2</h3>
-                <p>Mini App</p>
-                <p>Contribution Engine</p>
-                <p>Early Access</p>
-            </div>
-
-            <div class="phase">
-                <h3>Phase 3</h3>
-                <p>Public Beta</p>
-                <p>Seasons</p>
-                <p>Rankings</p>
-            </div>
-
+    <section class="container section" id="tokenomics">
+        <div class="section-head" style="text-align:center;">
+            <span class="eyebrow">Fixed Supply</span>
+            <h2>Token Distribution</h2>
         </div>
 
+        <div class="grid cols-4">
+            <div class="stat" style="text-align:center;">
+                <span class="stat-value" style="display:block; font-size:2.2rem;">60%</span>
+                <span class="stat-label" style="margin:10px 0 0;">Community Rewards</span>
+            </div>
+            <div class="stat" style="text-align:center;">
+                <span class="stat-value" style="display:block; font-size:2.2rem; color:var(--cyan);">15%</span>
+                <span class="stat-label" style="margin:10px 0 0;">Ecosystem Treasury</span>
+            </div>
+            <div class="stat" style="text-align:center;">
+                <span class="stat-value" style="display:block; font-size:2.2rem;">10%</span>
+                <span class="stat-label" style="margin:10px 0 0;">Liquidity</span>
+            </div>
+            <div class="stat" style="text-align:center;">
+                <span class="stat-value" style="display:block; font-size:2.2rem; color:var(--cyan);">10%</span>
+                <span class="stat-label" style="margin:10px 0 0;">Team & Development</span>
+            </div>
+        </div>
+
+        <div style="text-align:center; margin-top:20px;">
+            <a href="tokenomics.html" class="btn secondary" style="display:inline-block;">Full breakdown →</a>
+        </div>
     </section>
 
-    <footer id="community">
+    <section class="container section" id="roadmap">
+        <div class="section-head" style="text-align:center;">
+            <span class="eyebrow">Progress</span>
+            <h2>Roadmap</h2>
+        </div>
 
-        <h2>Join The Network</h2>
+        <div class="grid cols-3">
+            <div class="card">
+                <span class="badge completed">Completed</span>
+                <h3 style="margin-top:14px;">Phase 1</h3>
+                <p style="margin-top:8px;">Protocol design, tokenomics, website & community foundation.</p>
+            </div>
+            <div class="card">
+                <span class="badge inprogress">In Progress</span>
+                <h3 style="margin-top:14px;">Phase 2</h3>
+                <p style="margin-top:8px;">Mini App, contribution engine, and early access rollout.</p>
+            </div>
+            <div class="card">
+                <span class="badge planned">Planned</span>
+                <h3 style="margin-top:14px;">Phase 3</h3>
+                <p style="margin-top:8px;">Public beta, seasonal pools, and live contribution rankings.</p>
+            </div>
+        </div>
 
-        <p>Telegram • X • GitHub</p>
+        <div style="text-align:center; margin-top:28px;">
+            <a href="roadmap.html" class="btn secondary" style="display:inline-block;">View full roadmap →</a>
+        </div>
+    </section>
 
-        <small>
-            Built on TON • Fixed Supply: 10,000,000 RTM
-        </small>
-
+    <footer class="site-footer" id="community">
+        <div style="font-family:var(--font-head); color:var(--ink); font-size:1.3rem; margin-bottom:14px;">Join the
+            Network</div>
+        <div style="margin-bottom:18px;">Telegram · X · GitHub</div>
+        <strong>ROTUM PROTOCOL</strong> — Fixed Supply: 1,000,000 RTM — Built on TON
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/script.js"></script>
 </body>
 
 </html>

@@ -3,109 +3,50 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ROTUM Protocol | Hash Contribution</title>
-
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;500;700&display=swap" rel="stylesheet">
-
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
     <link rel="stylesheet" href="css/style.css">
-
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background: #050510;
-            color: #fff;
-            font-family: 'Orbitron', sans-serif;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: auto;
-        }
-
-        .hero {
+        .rank-tier {
             text-align: center;
-            padding: 100px 0;
         }
 
-        .hero h1 {
-            font-size: 4rem;
-            color: #b58cff;
-            text-shadow: 0 0 20px rgba(181, 140, 255, .4);
+        .rank-tier h3 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
         }
 
-        .hero p {
-            color: #888;
-            margin-top: 20px;
-            font-size: 1.1rem;
-        }
-
-        .section {
-            margin-top: 60px;
-        }
-
-        .section h2 {
-            font-size: 2rem;
-            color: #b58cff;
-            margin-bottom: 30px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .card {
-            background: linear-gradient(135deg, rgba(13, 13, 24, 0.6) 0%, rgba(45, 45, 85, 0.2) 100%);
-            border: 1px solid #2d2d55;
-            border-radius: 15px;
-            padding: 30px;
-            font-size: 1rem;
-            color: #aaa;
-            line-height: 1.7;
-        }
-
-        .ranks {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
-        }
-
-        .rank {
-            background: rgba(13, 13, 24, 0.4);
-            border: 1px solid rgba(45, 45, 85, 0.5);
-            border-radius: 15px;
-            padding: 30px;
-            text-align: center;
-            font-size: 1.1rem;
-            color: #888;
-        }
-
-        .rank h3 {
-            color: #b58cff;
-            font-size: 1.4rem;
-            margin-bottom: 10px;
-        }
-
-        footer {
-            margin-top: 100px;
-            text-align: center;
-            padding: 40px 0;
-            color: #555;
+        .rank-tier .range {
+            font-family: var(--font-mono);
+            color: var(--muted);
             font-size: 0.9rem;
-            border-top: 1px solid rgba(45, 45, 85, 0.3);
-            line-height: 1.8;
         }
 
-        @media(max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
+        .rank-silver h3 {
+            color: #c7c7d6;
+        }
+
+        .rank-gold h3 {
+            color: #ffd166;
+        }
+
+        .rank-platinum h3 {
+            color: var(--cyan);
+        }
+
+        .rank-quantum h3 {
+            color: var(--purple);
+        }
+
+        .warning {
+            margin-top: 20px;
+            border-left: 3px solid var(--amber);
+            background: rgba(255, 180, 69, 0.06);
+            padding: 18px 24px;
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            font-size: 0.9rem;
+            color: var(--amber);
         }
     </style>
 </head>
@@ -113,115 +54,94 @@
 <body>
 
     <header>
-        <button class="hamburger" id="hamburger-btn" aria-label="Toggle Menu">
-            <span class="line"></span>
-            <span class="line"></span>
-            <span class="line"></span>
-        </button>
-
-        <nav id="sidebar">
-            <div class="logo">
-                <a href="index.html">
-                    <img src="assets/logo.png" alt="ROTUM Protocol">
-                </a>
-            </div>
-
-            <div class="menu">
-                <a href="litepaper.html">LITEPAPER</a>
-                <a href="tokenomics.html">TOKENOMICS</a>
-                <a href="ecosystem.html">ECOSYSTEM</a>
-                <a href="contribution.html">CONTRIBUTION</a>
-                <a href="leaderboard.html">LEADERBOARD</a>
-                <a href="roadmap.html">ROADMAP</a>
-                <a href="team.html">TEAM</a>
-            </div>
-        </nav>
+        <div class="navbar">
+            <a href="index.html" class="brand">
+                <img src="assets/logo.svg" alt="ROTUM">
+                <span>ROTUM</span>
+            </a>
+            <button class="hamburger" id="hamburger-btn" aria-label="Toggle menu" aria-expanded="false">
+                <span class="line"></span><span class="line"></span><span class="line"></span>
+            </button>
+            <ul class="menu" id="menu">
+                <li><a href="litepaper.html">Litepaper</a></li>
+                <li><a href="tokenomics.html">Tokenomics</a></li>
+                <li><a href="ecosystem.html">Ecosystem</a></li>
+                <li><a href="contribution.html">Contribution</a></li>
+                <li><a href="leaderboard.html">Leaderboard</a></li>
+                <li><a href="roadmap.html">Roadmap</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="https://t.me/rotumprotocolbot" target="_blank" class="launch-btn">Launch App</a></li>
+            </ul>
+        </div>
     </header>
 
-    <div class="container">
-
-        <div class="hero">
-            <h1>HASH CONTRIBUTION</h1>
-            <p>Ecosystem contribution framework metrics, processing scores and operational tier rules.</p>
-        </div>
-
-        <div class="section">
-            <h2>Framework</h2>
-            <div class="card">
-                Rotum Protocol uses raw processing indicators to track community participation across separate
-                contribution windows. Your cumulative Hash Contribution determines network weights and allocations.
-            </div>
-        </div>
-
-        <div class="section">
-            <h2>Operator Tiers</h2>
-            <div class="ranks">
-
-                <div class="rank">
-                    <h3>Silver</h3>
-                    1 - 10 TH/s
-                </div>
-
-                <div class="rank">
-                    <h3>Gold</h3>
-                    10 - 100 TH/s
-                </div>
-
-                <div class="rank">
-                    <h3>Platinum</h3>
-                    100 - 1000 TH/s
-                </div>
-
-                <div class="rank">
-                    <h3>Quantum</h3>
-                    1000+ TH/s
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="section">
-            <h2>Seasonal Rewards</h2>
-
-            <div class="card">
-                Rewards are distributed according to:
-
-                <br><br>
-
-                • Total Hash Contribution
-                <br>
-                • Contribution Share
-                <br>
-                • Operator Rank
-                <br>
-                • Loyalty Score
-                <br>
-                • Seasonal Events
-                <br>
-                • Ecosystem Participation
-
-                <br><br>
-
-                Participation in the ecosystem does not guarantee rewards, returns, or compensation. Any rewards
-                distributed are
-                determined by contribution activity, ecosystem conditions, and protocol governance.
-            </div>
-
-        </div>
-
-        <footer>
-            ROTUM PROTOCOL
-            <br><br>
-            Community Powered
-            <br>
-            Built on TON
-        </footer>
-
+    <div class="hero">
+        <span class="eyebrow">Contribution Framework</span>
+        <h1>Hash Contribution</h1>
+        <p>Ecosystem contribution framework metrics, processing scores and operational tier rules.</p>
     </div>
 
-    <script src="js/script.js"></script>
+    <div class="container section" style="margin-top:20px;">
+        <div class="section-head">
+            <h2>Framework</h2>
+        </div>
+        <div class="card">
+            <p>Rotum Protocol uses raw processing indicators to track community participation across separate
+                contribution windows. Your cumulative Hash Contribution determines network weights and allocations.</p>
+        </div>
+    </div>
 
+    <div class="container section">
+        <div class="section-head">
+            <h2>Operator Tiers</h2>
+        </div>
+        <div class="grid cols-4">
+            <div class="card rank-tier rank-silver">
+                <h3>Silver</h3>
+                <div class="range">1 – 10 TH/s</div>
+            </div>
+            <div class="card rank-tier rank-gold">
+                <h3>Gold</h3>
+                <div class="range">10 – 100 TH/s</div>
+            </div>
+            <div class="card rank-tier rank-platinum">
+                <h3>Platinum</h3>
+                <div class="range">100 – 1000 TH/s</div>
+            </div>
+            <div class="card rank-tier rank-quantum">
+                <h3>Quantum</h3>
+                <div class="range">1000+ TH/s</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container section">
+        <div class="section-head">
+            <h2>Seasonal Rewards</h2>
+        </div>
+        <div class="card">
+            <p style="margin-bottom:12px; color:var(--ink);">Rewards are distributed according to:</p>
+            <ul style="padding-left:20px; columns:2; column-gap:30px;">
+                <li style="margin-bottom:8px;">Total Hash Contribution</li>
+                <li style="margin-bottom:8px;">Contribution Share</li>
+                <li style="margin-bottom:8px;">Operator Rank</li>
+                <li style="margin-bottom:8px;">Loyalty Score</li>
+                <li style="margin-bottom:8px;">Seasonal Events</li>
+                <li style="margin-bottom:8px;">Ecosystem Participation</li>
+            </ul>
+            <div class="warning">
+                Participation in the ecosystem does not guarantee rewards, returns, or compensation. Any rewards
+                distributed are determined by contribution activity, ecosystem conditions, and protocol governance.
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <strong>ROTUM PROTOCOL</strong><br>
+        Community Powered · Built on TON
+    </footer>
+
+    <script src="js/script.js"></script>
 </body>
 
 </html>

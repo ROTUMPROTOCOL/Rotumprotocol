@@ -3,171 +3,62 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-
-    <title>ROTUM Tokenomics</title>
-
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;500;700&display=swap" rel="stylesheet">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROTUM Protocol | Tokenomics</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
     <link rel="stylesheet" href="css/style.css">
-
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background: #050510;
-            color: #fff;
-            font-family: 'Orbitron', sans-serif;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 50px 20px;
-        }
-
-        .hero {
-            text-align: center;
-            padding: 80px 0;
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            color: #b58cff;
-            text-shadow: 0 0 20px #8f5cff;
-        }
-
-        .hero p {
-            color: #888;
-            margin-top: 20px;
-        }
-
-        .distribution-grid {
+        .tok-layout {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
         }
 
-        .item {
-            background: linear-gradient(135deg, #0d0d18 0%, #17172c 100%);
-            border: 1px solid #2d2d55;
-            padding: 30px;
-            border-radius: 15px;
+        .donut-wrap {
+            display: flex;
+            justify-content: center;
         }
 
-        .percentage {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #b58cff;
+        .donut-center {
+            font-family: var(--font-mono);
         }
 
-        .label {
-            font-size: 1.2rem;
-            margin-top: 5px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .legend-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
         }
 
-        .amount {
-            color: #888;
-            margin-top: 10px;
+        .legend-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .legend-swatch {
+            width: 14px;
+            height: 14px;
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+
+        .legend-row .legend-label {
+            font-family: var(--font-head);
+            font-weight: 600;
             font-size: 0.95rem;
         }
 
-        .description {
-            margin-top: 15px;
-            color: #aaa;
-            font-size: 0.9rem;
-            line-height: 1.6;
+        .legend-row .legend-pct {
+            margin-left: auto;
+            font-family: var(--font-mono);
+            font-weight: 700;
+            color: var(--ink);
         }
 
-        .chart-container {
-            margin-top: 80px;
-            text-align: center;
-        }
-
-        .chart-img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 15px;
-        }
-
-        .bar {
-            display: flex;
-            height: 30px;
-            border-radius: 15px;
-            overflow: hidden;
-            margin-top: 80px;
-            border: 1px solid #2d2d55;
-        }
-
-        .community {
-            background: #8f5cff;
-            width: 60%;
-        }
-
-        .treasury {
-            background: #5322ff;
-            width: 15%;
-        }
-
-        .liquidity {
-            background: #00d2ff;
-            width: 10%;
-        }
-
-        .team {
-            background: #ff007a;
-            width: 10%;
-        }
-
-        .marketing {
-            background: #ffaa00;
-            width: 5%;
-        }
-
-        .legend {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            margin-top: 30px;
-        }
-
-        .legend div {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 0.9rem;
-        }
-
-        .box {
-            width: 15px;
-            height: 15px;
-            border-radius: 4px;
-        }
-
-        footer {
-            margin-top: 100px;
-            text-align: center;
-            padding: 50px 0;
-            border-top: 1px solid #222;
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        @media(max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .legend {
-                gap: 15px;
+        @media (max-width: 800px) {
+            .tok-layout {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -176,121 +67,165 @@
 <body>
 
     <header>
-        <button class="hamburger" id="hamburger-btn" aria-label="Toggle Menu">
-            <span class="line"></span>
-            <span class="line"></span>
-            <span class="line"></span>
-        </button>
-
-        <nav id="sidebar">
-            <div class="logo">
-                <a href="index.html">
-                    <img src="assets/logo.png" alt="ROTUM Protocol">
-                </a>
-            </div>
-
-            <div class="menu">
-                <a href="litepaper.html">LITEPAPER</a>
-                <a href="tokenomics.html">TOKENOMICS</a>
-                <a href="ecosystem.html">ECOSYSTEM</a>
-                <a href="contribution.html">CONTRIBUTION</a>
-                <a href="leaderboard.html">LEADERBOARD</a>
-                <a href="roadmap.html">ROADMAP</a>
-                <a href="team.html">TEAM</a>
-            </div>
-        </nav>
+        <div class="navbar">
+            <a href="index.html" class="brand">
+                <img src="assets/logo.png" alt="ROTUM">
+                <span>ROTUM</span>
+            </a>
+            <button class="hamburger" id="hamburger-btn" aria-label="Toggle menu" aria-expanded="false">
+                <span class="line"></span><span class="line"></span><span class="line"></span>
+            </button>
+            <ul class="menu" id="menu">
+                <li><a href="litepaper.html">Litepaper</a></li>
+                <li><a href="tokenomics.html">Tokenomics</a></li>
+                <li><a href="ecosystem.html">Ecosystem</a></li>
+                <li><a href="contribution.html">Contribution</a></li>
+                <li><a href="leaderboard.html">Leaderboard</a></li>
+                <li><a href="roadmap.html">Roadmap</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="https://t.me/rotumprotocolbot" target="_blank" class="launch-btn">Launch App</a></li>
+            </ul>
+        </div>
     </header>
 
-    <div class="container">
-
-        <div class="hero">
-            <h1>TOKENOMICS</h1>
-            <p>The economic framework driving sustainable decentralized ecosystem contribution on TON.</p>
-        </div>
-
-        <div class="distribution-grid">
-
-            <div class="item">
-                <div class="percentage">60%</div>
-                <div class="label">Community Rewards</div>
-                <div class="amount">6,000,000 RTM</div>
-                <div class="description">Allocated for active protocol contributors, computing nodes, and seasonal
-                    interaction distribution.</div>
-            </div>
-
-            <div class="item">
-                <div class="percentage">15%</div>
-                <div class="label">Ecosystem Treasury</div>
-                <div class="amount">1,500,000 RTM</div>
-                <div class="description">Reserved for strategic growth initiatives, protocol development funding, and
-                    emergency resources.</div>
-            </div>
-
-            <div class="item">
-                <div class="percentage">10%</div>
-                <div class="label">Liquidity Pool</div>
-                <div class="amount">1,000,000 RTM</div>
-                <div class="description">Dedicated to decentralized exchanges to maintain healthy market efficiency and
-                    low slip margins.</div>
-            </div>
-
-            <div class="item">
-                <div class="percentage">10%</div>
-                <div class="label">Team & Dev</div>
-                <div class="amount">1,000,000 RTM</div>
-                <div class="description">Subject to continuous multi-year lockups and milestone performance unlock
-                    vesting rules.</div>
-            </div>
-
-            <div class="item">
-                <div class="percentage">5%</div>
-                <div class="label">Marketing</div>
-                <div class="amount">500,000 RTM</div>
-                <div class="description">Marketing, partnerships and community growth.</div>
-            </div>
-
-        </div>
-
-        <div class="chart-container">
-            <img src="assets/tokenomics-chart.png" alt="ROTUM Tokenomics Chart" class="chart-img">
-        </div>
-
-        <div class="bar">
-            <div class="community"></div>
-            <div class="treasury"></div>
-            <div class="liquidity"></div>
-            <div class="team"></div>
-            <div class="marketing"></div>
-        </div>
-
-        <div class="legend">
-            <div>
-                <div class="box community"></div>Community
-            </div>
-            <div>
-                <div class="box treasury"></div>Treasury
-            </div>
-            <div>
-                <div class="box liquidity"></div>Liquidity
-            </div>
-            <div>
-                <div class="box team"></div>Team
-            </div>
-            <div>
-                <div class="box marketing"></div>Marketing
-            </div>
-        </div>
-
-        <footer>
-            Maximum Supply: 10,000,000 RTM
-            <br><br>
-            Additional Minting: NONE
-        </footer>
-
+    <div class="hero">
+        <span class="eyebrow">Fixed Supply · 1,000,000 RTM</span>
+        <h1>Tokenomics</h1>
+        <p>The economic framework driving sustainable decentralized ecosystem contribution on TON.</p>
     </div>
 
-    <script src="js/script.js"></script>
+    <div class="container section" style="margin-top:20px;">
+        <div class="grid cols-4">
+            <!-- Community Rewards -->
+            <div class="card">
+                <span class="stat-value" style="font-size:2.2rem;">60%</span>
+                <div style="font-family:var(--font-head); font-weight:600; margin-top:6px;">Community Rewards</div>
+                <div class="mono" style="color:var(--muted); font-size:0.85rem; margin-top:4px;">600,000 RTM</div>
+                <p style="margin-top:12px; font-size:0.9rem;">Allocated for active protocol contributors, computing
+                    nodes, and
+                    seasonal interaction distribution.</p>
+            </div>
+            <!-- Ecosystem Treasury -->
+            <div class="card">
+                <span class="stat-value" style="font-size:2.2rem; color:var(--cyan);">15%</span>
+                <div style="font-family:var(--font-head); font-weight:600; margin-top:6px;">Ecosystem Treasury</div>
+                <div class="mono" style="color:var(--muted); font-size:0.85rem; margin-top:4px;">150,000 RTM</div>
+                <p style="margin-top:12px; font-size:0.9rem;">Reserved for strategic growth initiatives, protocol
+                    development
+                    funding, and emergency resources.</p>
+            </div>
+            <!-- Liquidity Pool -->
+            <div class="card">
+                <span class="stat-value" style="font-size:2.2rem; color:var(--purple);">6.25%</span>
+                <div style="font-family:var(--font-head); font-weight:600; margin-top:6px;">Liquidity Pool</div>
+                <div class="mono" style="color:var(--muted); font-size:0.85rem; margin-top:4px;">62,500 RTM</div>
+                <p style="margin-top:12px; font-size:0.9rem;">Dedicated to decentralized exchanges to maintain healthy
+                    market
+                    efficiency and low slip margins.</p>
+            </div>
+            <!-- Core Development -->
+            <div class="card">
+                <span class="stat-value" style="font-size:2.2rem; color:var(--amber);">6.25%</span>
+                <div style="font-family:var(--font-head); font-weight:600; margin-top:6px;">Core Development</div>
+                <div class="mono" style="color:var(--muted); font-size:0.85rem; margin-top:4px;">62,500 RTM</div>
+                <p style="margin-top:12px; font-size:0.9rem;">Product/technical work, engineering milestones, and
+                    continuous
+                    protocol feature maintenance.</p>
+            </div>
+            <!-- Growth & Marketing -->
+            <div class="card">
+                <span class="stat-value" style="font-size:2.2rem; color:var(--green);">6.25%</span>
+                <div style="font-family:var(--font-head); font-weight:600; margin-top:6px;">Growth & Marketing</div>
+                <div class="mono" style="color:var(--muted); font-size:0.85rem; margin-top:4px;">62,500 RTM</div>
+                <p style="margin-top:12px; font-size:0.9rem;">Marketing, ecosystem partnerships, and strategic community
+                    acquisition campaigns.</p>
+            </div>
+            <!-- Team & Advisors -->
+            <div class="card">
+                <span class="stat-value" style="font-size:2.2rem; color:var(--red, #ff4a4a);">6.25%</span>
+                <div style="font-family:var(--font-head); font-weight:600; margin-top:6px;">Team & Advisors</div>
+                <div class="mono" style="color:var(--muted); font-size:0.85rem; margin-top:4px;">62,500 RTM</div>
+                <p style="margin-top:12px; font-size:0.9rem;">Subject to continuous multi-year lockups and milestone
+                    performance
+                    unlock vesting rules.</p>
+            </div>
+        </div>
 
+        <div class="section">
+            <div class="section-head" style="text-align:center;">
+                <h2>Allocation Breakdown</h2>
+            </div>
+
+            <div class="card">
+                <div class="tok-layout">
+                    <div class="donut-wrap">
+                        <svg width="260" height="260" viewBox="0 0 200 200">
+                            <circle cx="100" cy="100" r="80" fill="none" stroke="rgba(255,255,255,0.05)"
+                                stroke-width="26" />
+
+                            <!-- Community 60% (301.59) -->
+                            <circle cx="100" cy="100" r="80" fill="none" stroke="#9b7bff" stroke-width="26"
+                                stroke-dasharray="301.59 502.65" stroke-dashoffset="0"
+                                transform="rotate(-90 100 100)" />
+
+                            <!-- Treasury 15% (75.40) -->
+                            <circle cx="100" cy="100" r="80" fill="none" stroke="#34e0d9" stroke-width="26"
+                                stroke-dasharray="75.40 502.65" stroke-dashoffset="-301.59"
+                                transform="rotate(-90 100 100)" />
+
+                            <!-- Liquidity 6.25% (31.42) -->
+                            <circle cx="100" cy="100" r="80" fill="none" stroke="#a15eff" stroke-width="26"
+                                stroke-dasharray="31.42 502.65" stroke-dashoffset="-376.99"
+                                transform="rotate(-90 100 100)" />
+
+                            <!-- Core Dev 6.25% (31.42) -->
+                            <circle cx="100" cy="100" r="80" fill="none" stroke="#ffb445" stroke-width="26"
+                                stroke-dasharray="31.42 502.65" stroke-dashoffset="-408.41"
+                                transform="rotate(-90 100 100)" />
+
+                            <!-- Growth & Marketing 6.25% (31.42) -->
+                            <circle cx="100" cy="100" r="80" fill="none" stroke="#35d29a" stroke-width="26"
+                                stroke-dasharray="31.42 502.65" stroke-dashoffset="-439.83"
+                                transform="rotate(-90 100 100)" />
+
+                            <!-- Team & Advisors 6.25% (31.42) -->
+                            <circle cx="100" cy="100" r="80" fill="none" stroke="#ff4a4a" stroke-width="26"
+                                stroke-dasharray="31.42 502.65" stroke-dashoffset="-471.25"
+                                transform="rotate(-90 100 100)" />
+
+                            <text x="100" y="95" text-anchor="middle" class="donut-center" fill="#f4f3fb" font-size="22"
+                                font-weight="700">1M</text>
+                            <text x="100" y="116" text-anchor="middle" class="donut-center" fill="#8d8ba0"
+                                font-size="11" letter-spacing="2">RTM FIXED</text>
+                        </svg>
+                    </div>
+
+                    <div class="legend-list">
+                        <div class="legend-row"><span class="legend-swatch" style="background:#9b7bff;"></span><span
+                                class="legend-label">Community</span><span class="legend-pct">60%</span></div>
+                        <div class="legend-row"><span class="legend-swatch" style="background:#34e0d9;"></span><span
+                                class="legend-label">Treasury</span><span class="legend-pct">15%</span></div>
+                        <div class="legend-row"><span class="legend-swatch" style="background:#a15eff;"></span><span
+                                class="legend-label">Liquidity Pool</span><span class="legend-pct">6.25%</span></div>
+                        <div class="legend-row"><span class="legend-swatch" style="background:#ffb445;"></span><span
+                                class="legend-label">Core Development</span><span class="legend-pct">6.25%</span></div>
+                        <div class="legend-row"><span class="legend-swatch" style="background:#35d29a;"></span><span
+                                class="legend-label">Growth & Marketing</span><span class="legend-pct">6.25%</span>
+                        </div>
+                        <div class="legend-row"><span class="legend-swatch" style="background:#ff4a4a;"></span><span
+                                class="legend-label">Team & Advisors</span><span class="legend-pct">6.25%</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        Maximum Supply: 1,000,000 RTM<br>
+        Additional Minting: <strong>None</strong>
+    </footer>
+
+    <script src="js/script.js"></script>
 </body>
 
 </html>

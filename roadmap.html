@@ -3,191 +3,103 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ROTUM Protocol | Roadmap</title>
-
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;500;700&display=swap" rel="stylesheet">
-
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
     <link rel="stylesheet" href="css/style.css">
-
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background: #050510;
-            color: #fff;
-            font-family: 'Orbitron', sans-serif;
-            overflow-x: hidden;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: auto;
-        }
-
-        .hero {
-            padding: 100px 0;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            color: #b58cff;
-            text-shadow: 0 0 20px rgba(181, 140, 255, .5);
-        }
-
-        .hero p {
-            margin-top: 20px;
-            color: #888;
-            font-size: 1.1rem;
-        }
-
-        .timeline {
+        .rm-timeline {
             position: relative;
-            margin-top: 80px;
-            padding-bottom: 100px;
+            margin-top: 20px;
+            padding-bottom: 40px;
         }
 
-        .timeline::before {
+        .rm-timeline::before {
             content: "";
             position: absolute;
             left: 50%;
             top: 0;
-            width: 4px;
+            width: 2px;
             height: 100%;
-            background: #2d2d55;
+            background: var(--line);
             transform: translateX(-50%);
         }
 
-        .phase {
+        .rm-phase {
             position: relative;
             width: 45%;
-            background: #0d0d18;
-            border: 1px solid #2d2d55;
-            border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 60px;
-            box-shadow: 0 0 30px rgba(143, 92, 255, .08);
+            margin-bottom: 40px;
         }
 
-        .phase:nth-child(odd) {
+        .rm-phase:nth-child(odd) {
             left: 0;
         }
 
-        .phase:nth-child(even) {
+        .rm-phase:nth-child(even) {
             left: 55%;
         }
 
-        .phase::after {
+        .rm-phase::after {
             content: "";
             position: absolute;
-            width: 22px;
-            height: 22px;
+            width: 14px;
+            height: 14px;
             border-radius: 50%;
-            background: #8f5cff;
-            top: 40px;
+            background: var(--bg);
+            border: 3px solid var(--purple);
+            top: 28px;
         }
 
-        .phase:nth-child(odd)::after {
-            right: -53px;
+        .rm-phase:nth-child(odd)::after {
+            right: -37px;
         }
 
-        .phase:nth-child(even)::after {
-            left: -53px;
+        .rm-phase:nth-child(even)::after {
+            left: -37px;
         }
 
-        .phase-title {
-            color: #b58cff;
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            line-height: 1.4;
+        .rm-phase h3 {
+            font-size: 1.15rem;
+            margin: 12px 0 14px;
         }
 
-        .phase-status {
-            display: inline-block;
-            padding: 6px 14px;
-            border-radius: 20px;
-            background: #16162b;
-            margin-bottom: 20px;
-            font-size: 0.85rem;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-
-        .status-completed {
-            color: #00d084;
-            border: 1px solid rgba(0, 208, 132, 0.2);
-        }
-
-        .status-inprogress {
-            color: #ffaa00;
-            border: 1px solid rgba(255, 170, 0, 0.2);
-        }
-
-        .status-planned {
-            color: #c373fc;
-            border: 1px solid rgba(195, 115, 252, 0.2);
-        }
-
-        .status-vision {
-            color: #aaa;
-            border: 1px solid rgba(170, 170, 170, 0.2);
-        }
-
-        .phase ul {
+        .rm-phase ul {
             list-style: none;
         }
 
-        .phase li {
-            padding: 10px 0;
-            border-bottom: 1px solid #1d1d35;
-            font-size: 0.95rem;
+        .rm-phase li {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--line);
+            font-size: 0.9rem;
+            color: var(--muted);
         }
 
-        .phase li:last-child {
+        .rm-phase li:last-child {
             border: none;
         }
 
-        .completed {
-            color: #00d084;
+        .rm-phase li.done {
+            color: var(--green);
         }
 
-        .progress {
-            color: #ffaa00;
+        .rm-phase li.active {
+            color: var(--amber);
         }
 
-        .future {
-            color: #999;
-        }
-
-        footer {
-            margin-top: 100px;
-            text-align: center;
-            padding: 50px;
-            border-top: 1px solid #222;
-            color: #666;
-            line-height: 1.8;
-        }
-
-        @media(max-width:900px) {
-            .timeline::before {
-                left: 20px;
+        @media (max-width: 860px) {
+            .rm-timeline::before {
+                left: 8px;
             }
 
-            .phase {
+            .rm-phase {
                 width: 100%;
                 left: 0 !important;
-                margin-left: 50px;
+                padding-left: 34px;
             }
 
-            .phase::after {
-                left: -42px !important;
+            .rm-phase::after {
+                left: 1px !important;
+                right: auto !important;
             }
         }
     </style>
@@ -196,147 +108,125 @@
 <body>
 
     <header>
-        <button class="hamburger" id="hamburger-btn" aria-label="Toggle Menu">
-            <span class="line"></span>
-            <span class="line"></span>
-            <span class="line"></span>
-        </button>
-
-        <nav id="sidebar">
-            <div class="logo">
-                <a href="index.html">
-                    <img src="assets/logo.png" alt="ROTUM Protocol">
-                </a>
-            </div>
-
-            <div class="menu">
-                <a href="litepaper.html">LITEPAPER</a>
-                <a href="tokenomics.html">TOKENOMICS</a>
-                <a href="ecosystem.html">ECOSYSTEM</a>
-                <a href="contribution.html">CONTRIBUTION</a>
-                <a href="leaderboard.html">LEADERBOARD</a>
-                <a href="roadmap.html">ROADMAP</a>
-                <a href="team.html">TEAM</a>
-            </div>
-        </nav>
+        <div class="navbar">
+            <a href="index.html" class="brand">
+                <img src="assets/logo.svg" alt="ROTUM">
+                <span>ROTUM</span>
+            </a>
+            <button class="hamburger" id="hamburger-btn" aria-label="Toggle menu" aria-expanded="false">
+                <span class="line"></span><span class="line"></span><span class="line"></span>
+            </button>
+            <ul class="menu" id="menu">
+                <li><a href="litepaper.html">Litepaper</a></li>
+                <li><a href="tokenomics.html">Tokenomics</a></li>
+                <li><a href="ecosystem.html">Ecosystem</a></li>
+                <li><a href="contribution.html">Contribution</a></li>
+                <li><a href="leaderboard.html">Leaderboard</a></li>
+                <li><a href="roadmap.html">Roadmap</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="https://t.me/rotumprotocolbot" target="_blank" class="launch-btn">Launch App</a></li>
+            </ul>
+        </div>
     </header>
 
-    <div class="container">
-
-        <div class="hero">
-            <h1>ROADMAP</h1>
-            <p>Building the future of contribution on TON</p>
-        </div>
-
-        <div class="timeline">
-
-            <div class="phase">
-                <div class="phase-title">
-                    PHASE 1 — FOUNDATION & RESEARCH
-                </div>
-                <div class="phase-status status-completed">
-                    Completed
-                </div>
-                <ul>
-                    <li class="completed">✓ Protocol concept and architecture</li>
-                    <li class="completed">✓ RTM tokenomics design</li>
-                    <li class="completed">✓ Fixed supply model (10,000,000 RTM)</li>
-                    <li class="completed">✓ Contribution economy framework</li>
-                    <li class="completed">✓ Telegram Mini App prototype</li>
-                    <li class="completed">✓ Community formation and branding</li>
-                    <li class="completed">✓ Website and Litepaper release</li>
-                </ul>
-            </div>
-
-            <div class="phase">
-                <div class="phase-title">
-                    PHASE 2 — ECOSYSTEM DEVELOPMENT
-                </div>
-                <div class="phase-status status-inprogress">
-                    In Progress
-                </div>
-                <ul>
-                    <li class="progress">● Telegram Mini App development</li>
-                    <li class="progress">● Contribution engine implementation</li>
-                    <li class="progress">● User dashboard and analytics</li>
-                    <li class="progress">● Referral and growth system</li>
-                    <li class="progress">● RTM utility integration</li>
-                    <li class="progress">● Boost and multiplier system</li>
-                    <li class="progress">● RTM lock mechanics</li>
-                    <li class="progress">● Seasonal contribution framework</li>
-                    <li class="progress">● Security and infrastructure optimization</li>
-                </ul>
-            </div>
-
-            <div class="phase">
-                <div class="phase-title">
-                    PHASE 3 — PUBLIC BETA & COMMUNITY EXPANSION
-                </div>
-                <div class="phase-status status-planned">
-                    Planned
-                </div>
-                <ul>
-                    <li class="future">○ Public Beta launch</li>
-                    <li class="future">○ Genesis contributor campaign</li>
-                    <li class="future">○ Seasonal reward distribution</li>
-                    <li class="future">○ Contribution leaderboards</li>
-                    <li class="future">○ Achievement progression system</li>
-                    <li class="future">○ Community growth initiatives</li>
-                    <li class="future">○ Strategic partnerships</li>
-                    <li class="future">○ Ecosystem optimization</li>
-                </ul>
-            </div>
-
-            <div class="phase">
-                <div class="phase-title">
-                    PHASE 4 — ACHIEVEMENTS & DIGITAL OWNERSHIP
-                </div>
-                <div class="phase-status status-planned">
-                    Future
-                </div>
-                <ul>
-                    <li class="future">○ Achievement NFT framework</li>
-                    <li class="future">○ Soulbound contributor badges</li>
-                    <li class="future">○ Genesis contributor collection</li>
-                    <li class="future">○ Seasonal achievement rewards</li>
-                    <li class="future">○ Contributor profile system</li>
-                    <li class="future">○ Long-term participation incentives</li>
-                    <li class="future">○ Digital achievement history</li>
-                </ul>
-            </div>
-
-            <div class="phase">
-                <div class="phase-title">
-                    PHASE 5 — BLOCKCHAIN INFRASTRUCTURE
-                </div>
-                <div class="phase-status status-vision">
-                    Vision
-                </div>
-                <ul>
-                    <li class="future">○ RTM smart contract deployment</li>
-                    <li class="future">○ On-chain staking and locking</li>
-                    <li class="future">○ Achievement NFT contracts</li>
-                    <li class="future">○ Contributor identity system</li>
-                    <li class="future">○ Community governance mechanisms</li>
-                    <li class="future">○ Protocol security and audits</li>
-                    <li class="future">○ Ecosystem expansion opportunities</li>
-                </ul>
-            </div>
-
-        </div>
-
-        <footer>
-            ROTUM PROTOCOL
-            <br><br>
-            Fixed Supply: 10,000,000 RTM
-            <br>
-            Built on TON
-        </footer>
-
+    <div class="hero">
+        <span class="eyebrow">Five Phases</span>
+        <h1>Roadmap</h1>
+        <p>Building the future of contribution on TON.</p>
     </div>
 
-    <script src="js/script.js"></script>
+    <div class="container section" style="margin-top:20px;">
+        <div class="rm-timeline">
 
+            <!-- Phase 1 -->
+            <div class="rm-phase card">
+                <span class="badge completed">Completed</span>
+                <h3>Phase 1 — Foundation & Research</h3>
+                <ul>
+                    <li class="done">✓ Protocol concept and architecture[cite: 4]</li>
+                    <li class="done">✓ RTM tokenomics design[cite: 4]</li>
+                    <li class="done">✓ Fixed supply model (1,000,000 RTM)[cite: 4]</li>
+                    <li class="done">✓ Contribution economy framework[cite: 4]</li>
+                    <li class="done">✓ Telegram Mini App prototype[cite: 4]</li>
+                    <li class="done">✓ Community formation and branding[cite: 4]</li>
+                    <li class="done">✓ Website and Litepaper release[cite: 4]</li>
+                </ul>
+            </div>
+
+            <!-- Phase 2 -->
+            <div class="rm-phase card">
+                <span class="badge inprogress">In Progress</span>
+                <h3>Phase 2 — Ecosystem Development</h3>
+                <ul>
+                    <li class="done">✓ Genesis contributor NFT collection (Testnet deployment)[cite: 4]</li>
+                    <li class="active">● Telegram Mini App development & contract bug fixes[cite: 4]</li>
+                    <li class="active">● Contribution engine implementation[cite: 4]</li>
+                    <li class="active">● Ecosystem Treasury architecture & reserve controls[cite: 4]</li>
+                    <li class="active">● User dashboard and analytics[cite: 4]</li>
+                    <li class="active">● Referral and growth system[cite: 4]</li>
+                    <li class="active">● RTM utility integration & lock mechanics[cite: 4]</li>
+                    <li class="active">● Boost and multiplier system[cite: 4]</li>
+                    <li class="active">● Seasonal contribution framework[cite: 4]</li>
+                    <li class="active">● Security and infrastructure optimization[cite: 4]</li>
+                </ul>
+            </div>
+
+            <!-- Phase 3 -->
+            <div class="rm-phase card">
+                <span class="badge planned">Planned</span>
+                <h3>Phase 3 — Public Beta & Community Expansion</h3>
+                <ul>
+                    <li>○ Public Beta launch[cite: 4]</li>
+                    <li>○ Genesis contributor campaign[cite: 4]</li>
+                    <li>○ Seasonal reward distribution[cite: 4]</li>
+                    <li>○ Contribution leaderboards[cite: 4]</li>
+                    <li>○ Achievement progression system[cite: 4]</li>
+                    <li>○ Community growth initiatives[cite: 4]</li>
+                    <li>○ Strategic partnerships[cite: 4]</li>
+                    <li>○ Ecosystem optimization[cite: 4]</li>
+                </ul>
+            </div>
+
+            <!-- Phase 4 -->
+            <div class="rm-phase card">
+                <span class="badge planned">Future</span>
+                <h3>Phase 4 — Achievements & Digital Ownership</h3>
+                <ul>
+                    <li>○ Achievement NFT framework[cite: 4]</li>
+                    <li>○ Soulbound contributor badges[cite: 4]</li>
+                    <li>○ In-app NFT utility features (Exclusive multipliers & platform perks)[cite: 4]</li>
+                    <li>○ Seasonal achievement rewards[cite: 4]</li>
+                    <li>○ Contributor profile system[cite: 4]</li>
+                    <li>○ Long-term participation incentives[cite: 4]</li>
+                    <li>○ Digital achievement history[cite: 4]</li>
+                </ul>
+            </div>
+
+            <!-- Phase 5 -->
+            <div class="rm-phase card">
+                <span class="badge vision">Vision</span>
+                <h3>Phase 5 — Blockchain Infrastructure</h3>
+                <ul>
+                    <li>○ RTM Jetton smart contract deployment on TON Mainnet[cite: 4]</li>
+                    <li>○ Comprehensive Protocol security reviews & Mainnet Audits[cite: 4]</li>
+                    <li>○ On-chain staking, locking, and reward distribution frameworks[cite: 4]</li>
+                    <li>○ Sustainable Buyback & Burn mechanism implementation (via protocol fee revenue)[cite: 4]</li>
+                    <li>○ Achievement NFT mainnet contract deployment[cite: 4]</li>
+                    <li>○ Contributor identity system[cite: 4]</li>
+                    <li>○ Community governance mechanisms (DAO)[cite: 4]</li>
+                    <li>○ Ecosystem expansion opportunities[cite: 4]</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <strong>ROTUM PROTOCOL</strong><br>
+        Fixed Supply: 1,000,000 RTM · Built on TON[cite: 4]
+    </footer>
+
+    <script src="js/script.js"></script>
 </body>
 
 </html>
