@@ -1,19 +1,21 @@
 // ROTUM PROTOCOL — SITE SCRIPT
 
 // ---------- SUPABASE CONFIG ----------
-// Get these from: Supabase Dashboard → Settings → API
-// The anon key is PUBLIC by design — safe to ship in this file.
-// NEVER put the service_role key here.
 const SUPABASE_URL = "https://aavynuxipocthqwpnzrd.supabase.co";
-const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFhdnludXhpcG9jdGhxd3BuenJkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI0OTU4MTAsImV4cCI6MjA5ODA3MTgxMH0.h5mBjbytNymb4FgyHBp0zQ7pPC6r9Z_IRBSvECxO7xs";
+const SUPABASE_ANON_KEY =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFhdnludXhpcG9jdGhxd3BuenJkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI0OTU4MTAsImV4cCI6MjA5ODA3MTgxMH0.h5mBjbytNymb4FgyHBp0zQ7pPC6r9Z_IRBSvECxO7xs";
 
 let supabaseClient = null;
+
 if (
     window.supabase &&
     SUPABASE_URL !== "YOUR_SUPABASE_PROJECT_URL" &&
     SUPABASE_ANON_KEY !== "YOUR_SUPABASE_ANON_KEY"
 ) {
-    supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    supabaseClient = window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_ANON_KEY
+    );
 }
 
 // ---------- NUMBER ANIMATION ----------
@@ -29,166 +31,297 @@ function animateNumber(element, target, suffix = "") {
             clearInterval(interval);
         }
 
-        element.innerText = Math.round(current).toLocaleString() + suffix;
+        element.innerText =
+            Math.round(current).toLocaleString() + suffix;
     }, 20);
 }
 
-// Format a raw hash-power number (TH/s) into whatever unit reads cleanest
+// ---------- HASH POWER FORMAT ----------
 function formatHashPower(th) {
-    if (th >= 1000) return { value: th / 1000, suffix: " PH/s" };
-    return { value: th, suffix: " TH/s" };
+    if (th >= 1000)
+        return {
+            value: th / 1000,
+            suffix: " PH/s"
+        };
+
+    return {
+        value: th,
+        suffix: " TH/s"
+    };
 }
 
 // ---------- HOMEPAGE: LIVE NETWORK STATS ----------
 async function loadNetworkStats() {
-    const networkEl = document.getElementById("network");
-    const operatorsEl = document.getElementById("operators");
-    const seasonEl = document.getElementById("season");
+    const networkEl =
+        document.getElementById("network");
+    const operatorsEl =
+        document.getElementById("operators");
+    const seasonEl =
+        document.getElementById("season");
 
-    if (!networkEl && !operatorsEl && !seasonEl) return;
+    if (
+        !networkEl &&
+        !operatorsEl &&
+        !seasonEl
+    )
+        return;
 
-    // Fallback values
     const fallback = () => {
-        if (networkEl) animateNumber(networkEl, 142.8, " PH/s");
-        if (operatorsEl) animateNumber(operatorsEl, 12847);
-        if (seasonEl) animateNumber(seasonEl, 850000, " RTM");
+        if (networkEl)
+            animateNumber(
+                networkEl,
+                142.8,
+                " PH/s"
+            );
+
+        if (operatorsEl)
+            animateNumber(
+                operatorsEl,
+                12847
+            );
+
+        if (seasonEl)
+            animateNumber(
+                seasonEl,
+                850000,
+                " RTM"
+            );
     };
 
-    // No Supabase configured
     if (!supabaseClient) {
         fallback();
         return;
     }
 
     try {
-        const { data, error } = await supabaseClient
-            .from("v_network_stats")
-            .select("pool_current, operators, network_hash")
-            .maybeSingle();
+        const { data, error } =
+            await supabaseClient
+                .from("v_network_stats")
+                .select(
+                    "pool_current, operators, network_hash"
+                )
+                .maybeSingle();
 
         if (error) {
-            console.error("Failed to load network stats:", error);
+            console.error(
+                "Failed to load network stats:",
+                error
+            );
             fallback();
             return;
         }
 
-        // Empty table/view
         if (!data) {
-            console.warn("No network stats found. Using fallback data.");
+            console.warn(
+                "No network stats found."
+            );
             fallback();
             return;
         }
 
-        // Render live data
         if (networkEl) {
-            const { value, suffix } =
-                formatHashPower(Number(data.network_hash) || 0);
-            animateNumber(networkEl, value, suffix);
+            const {
+                value,
+                suffix
+            } = formatHashPower(
+                Number(
+                    data.network_hash
+                ) || 0
+            );
+
+            animateNumber(
+                networkEl,
+                value,
+                suffix
+            );
         }
 
         if (operatorsEl)
-            animateNumber(operatorsEl, Number(data.operators) || 0);
+            animateNumber(
+                operatorsEl,
+                Number(
+                    data.operators
+                ) || 0
+            );
 
         if (seasonEl)
             animateNumber(
                 seasonEl,
-                Number(data.pool_current) || 0,
+                Number(
+                    data.pool_current
+                ) || 0,
                 " RTM"
             );
-
     } catch (err) {
-        console.error("Unexpected error loading network stats:", err);
+        console.error(err);
         fallback();
     }
 }
 
 // ---------- HOMEPAGE: LIVE NETWORK FEED ----------
-function renderFeedItem(container, message) {
-    const item = document.createElement("div");
+function renderFeedItem(
+    container,
+    message
+) {
+    const item =
+        document.createElement("div");
+
     item.className = "feed-item";
-    item.innerHTML = "⚡ " + message;
+    item.innerHTML =
+        "⚡ " + message;
+
     container.prepend(item);
 
-    while (container.children.length > 6) {
-        container.removeChild(container.lastChild);
+    while (
+        container.children.length > 6
+    ) {
+        container.removeChild(
+            container.lastChild
+        );
     }
 }
 
 async function loadNetworkFeed() {
-    const container = document.getElementById("network-feed");
+    const container =
+        document.getElementById(
+            "network-feed"
+        );
+
     if (!container) return;
 
+    const demo = [
+        "Operator #918 reached 1 PH/s contribution",
+        "Season reward pool increased",
+        "New contributor joined network",
+        "Season multiplier activated"
+    ];
+
     if (!supabaseClient) {
-        const demo = [
-            "Operator #918 reached 1 PH/s contribution",
-            "Season reward pool increased",
-            "New contributor joined network",
-            "Season multiplier activated"
-        ];
-        demo.forEach(msg => renderFeedItem(container, msg));
+        demo.forEach(msg =>
+            renderFeedItem(
+                container,
+                msg
+            )
+        );
         return;
     }
 
-    const { data, error } = await supabaseClient
-        .from("network_feed")
-        .select("message, created_at")
-        .order("created_at", { ascending: false })
-        .limit(6);
+    const { data, error } =
+        await supabaseClient
+            .from("network_feed")
+            .select(
+                "message, created_at"
+            )
+            .order(
+                "created_at",
+                {
+                    ascending: false
+                }
+            )
+            .limit(6);
 
-    if (error || !data || data.length === 0) {
-        console.warn("Using fallback network feed.");
+    if (
+        error ||
+        !data ||
+        data.length === 0
+    ) {
+        console.warn(
+            "Using demo feed."
+        );
 
-        container.innerHTML = "";
+        demo.forEach(msg =>
+            renderFeedItem(
+                container,
+                msg
+            )
+        );
 
-        const demo = [
-            "Operator #918 reached 1 PH/s contribution",
-            "Season reward pool increased",
-            "New contributor joined network",
-            "Season multiplier activated"
-        ];
-
-        demo.forEach(msg => renderFeedItem(container, msg));
         return;
     }
 
     container.innerHTML = "";
-    data.forEach(row => renderFeedItem(container, row.message));
 
-    // Poll for new feed entries every 15s
+    data.forEach(row =>
+        renderFeedItem(
+            container,
+            row.message
+        )
+    );
+
     setInterval(async () => {
-        const { data: latest } = await supabaseClient
-            .from("network_feed")
-            .select("message, created_at")
-            .order("created_at", { ascending: false })
-            .limit(1);
+        const {
+            data: latest
+        } =
+            await supabaseClient
+                .from(
+                    "network_feed"
+                )
+                .select(
+                    "message, created_at"
+                )
+                .order(
+                    "created_at",
+                    {
+                        ascending: false
+                    }
+                )
+                .limit(1);
 
-        if (latest && latest[0]) {
-            renderFeedItem(container, latest[0].message);
+        if (
+            latest &&
+            latest[0]
+        ) {
+            renderFeedItem(
+                container,
+                latest[0].message
+            );
         }
     }, 15000);
 }
 
-// Matches the tiers described on contribution.html
+// ---------- TIERS ----------
 function getTier(th) {
-    if (th >= 1000) return "Quantum";
-    if (th >= 100) return "Platinum";
-    if (th >= 10) return "Gold";
+    if (th >= 1000)
+        return "Quantum";
+
+    if (th >= 100)
+        return "Platinum";
+
+    if (th >= 10)
+        return "Gold";
+
     return "Silver";
 }
 
-// ---------- LEADERBOARD PAGE ----------
+// ---------- LEADERBOARD ----------
 async function loadLeaderboard() {
-    const tbody = document.getElementById("leaderboard-body");
-    if (!tbody || !supabaseClient) return;
+    const tbody =
+        document.getElementById(
+            "leaderboard-body"
+        );
 
-    const { data, error } = await supabaseClient
-        .from("v_leaderboard")
-        .select("rank, entity, hash_power, network_share, est_reward")
-        .order("rank", { ascending: true })
-        .limit(20);
+    if (
+        !tbody ||
+        !supabaseClient
+    )
+        return;
 
-    if (error || !data || data.length === 0) {
-        console.warn("No leaderboard data found.");
+    const { data, error } =
+        await supabaseClient
+            .from(
+                "v_leaderboard"
+            )
+            .select(
+                "rank, entity, hash_power, network_share, est_reward"
+            )
+            .order("rank")
+            .limit(20);
+
+    if (
+        error ||
+        !data ||
+        data.length === 0
+    ) {
         tbody.innerHTML = `
             <tr>
                 <td colspan="5" style="text-align:center;padding:20px;">
@@ -198,67 +331,171 @@ async function loadLeaderboard() {
         `;
         return;
     }
-    tbody.innerHTML = "";
-    data.forEach(row => {
-        const tr = document.createElement("tr");
-        if (row.rank <= 3) tr.classList.add("rank-" + row.rank);
 
-        const { value, suffix } = formatHashPower(Number(row.hash_power) || 0);
-        const tier = getTier(Number(row.hash_power) || 0);
+    tbody.innerHTML = "";
+
+    data.forEach(row => {
+        const tr =
+            document.createElement(
+                "tr"
+            );
+
+        if (row.rank <= 3)
+            tr.classList.add(
+                "rank-" +
+                    row.rank
+            );
+
+        const {
+            value,
+            suffix
+        } = formatHashPower(
+            Number(
+                row.hash_power
+            ) || 0
+        );
+
+        const tier =
+            getTier(
+                Number(
+                    row.hash_power
+                ) || 0
+            );
 
         tr.innerHTML = `
             <td>#${row.rank}</td>
             <td>${row.entity}</td>
-            <td class="mono">${value.toFixed(2)}${suffix}</td>
-            <td><span class="tier-pill">${tier}</span></td>
-            <td class="mono">${Number(row.network_share).toFixed(2)}%</td>
+            <td class="mono">
+                ${value.toFixed(
+                    2
+                )}${suffix}
+            </td>
+            <td>
+                <span class="tier-pill">
+                    ${tier}
+                </span>
+            </td>
+            <td class="mono">
+                ${Number(
+                    row.network_share
+                ).toFixed(2)}%
+            </td>
         `;
+
         tbody.appendChild(tr);
     });
 }
 
-window.addEventListener("load", () => {
-    loadNetworkStats();
-    loadNetworkFeed();
-    loadLeaderboard();
-});
+// ---------- INITIALIZE ----------
+window.addEventListener(
+    "load",
+    () => {
+        loadNetworkStats();
+        loadNetworkFeed();
+        loadLeaderboard();
+    }
+);
 
-// ---------- HERO GLOW FOLLOWS CURSOR ----------
-document.addEventListener("mousemove", e => {
-    const glow = document.querySelector(".glow");
-    if (!glow) return;
+// ---------- HERO GLOW ----------
+document.addEventListener(
+    "mousemove",
+    e => {
+        const glow =
+            document.querySelector(
+                ".glow"
+            );
 
-    glow.style.left = e.clientX + "px";
-    glow.style.top = e.clientY + "px";
-});
+        if (!glow) return;
 
-// ---------- NAV: HAMBURGER + ACTIVE LINK ----------
-document.addEventListener("DOMContentLoaded", () => {
-    const hamburgerBtn = document.getElementById("hamburger-btn");
-    const menu = document.getElementById("menu");
+        glow.style.left =
+            e.clientX + "px";
 
-    if (hamburgerBtn && menu) {
-        hamburgerBtn.addEventListener("click", () => {
-            const isOpen = menu.classList.toggle("active");
-            hamburgerBtn.classList.toggle("active", isOpen);
-            hamburgerBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
-        });
+        glow.style.top =
+            e.clientY + "px";
+    }
+);
 
-        menu.querySelectorAll("a").forEach(link => {
-            link.addEventListener("click", () => {
-                menu.classList.remove("active");
-                hamburgerBtn.classList.remove("active");
-                hamburgerBtn.setAttribute("aria-expanded", "false");
+// ---------- NAV ----------
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+        const hamburgerBtn =
+            document.getElementById(
+                "hamburger-btn"
+            );
+
+        const menu =
+            document.getElementById(
+                "menu"
+            );
+
+        if (
+            hamburgerBtn &&
+            menu
+        ) {
+            hamburgerBtn.addEventListener(
+                "click",
+                () => {
+                    const isOpen =
+                        menu.classList.toggle(
+                            "active"
+                        );
+
+                    hamburgerBtn.classList.toggle(
+                        "active",
+                        isOpen
+                    );
+
+                    hamburgerBtn.setAttribute(
+                        "aria-expanded",
+                        isOpen
+                            ? "true"
+                            : "false"
+                    );
+                }
+            );
+
+            menu.querySelectorAll(
+                "a"
+            ).forEach(link => {
+                link.addEventListener(
+                    "click",
+                    () => {
+                        menu.classList.remove(
+                            "active"
+                        );
+
+                        hamburgerBtn.classList.remove(
+                            "active"
+                        );
+
+                        hamburgerBtn.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
+                    }
+                );
             });
+        }
+
+        const currentPage =
+            window.location.pathname
+                .split("/")
+                .pop() ||
+            "index.html";
+
+        document.querySelectorAll(
+            ".menu a"
+        ).forEach(link => {
+            if (
+                link.getAttribute(
+                    "href"
+                ) === currentPage
+            ) {
+                link.classList.add(
+                    "active"
+                );
+            }
         });
     }
-
-    // Highlight the current page in the nav
-    const currentPage = window.location.pathname.split("/").pop() || "index.html";
-    document.querySelectorAll(".menu a").forEach(link => {
-        const href = link.getAttribute("href");
-        if (href === currentPage) {
-            link.classList.add("active");
-        }
-    });
-});
+);
