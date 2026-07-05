@@ -44,32 +44,62 @@ async function loadNetworkStats() {
     const networkEl = document.getElementById("network");
     const operatorsEl = document.getElementById("operators");
     const seasonEl = document.getElementById("season");
+
     if (!networkEl && !operatorsEl && !seasonEl) return;
 
-    if (!supabaseClient) {
-        // Demo fallback so the page still looks alive before keys are added
+    // Fallback values
+    const fallback = () => {
         if (networkEl) animateNumber(networkEl, 142.8, " PH/s");
         if (operatorsEl) animateNumber(operatorsEl, 12847);
         if (seasonEl) animateNumber(seasonEl, 850000, " RTM");
+    };
+
+    // No Supabase configured
+    if (!supabaseClient) {
+        fallback();
         return;
     }
 
-    const { data, error } = await supabaseClient
-        .from("v_network_stats")
-        .select("pool_current, operators, network_hash")
-        .single();
+    try {
+        const { data, error } = await supabaseClient
+            .from("v_network_stats")
+            .select("pool_current, operators, network_hash")
+            .maybeSingle();
 
-    if (error || !data) {
-        console.error("Failed to load network stats:", error);
-        return;
-    }
+        if (error) {
+            console.error("Failed to load network stats:", error);
+            fallback();
+            return;
+        }
 
-    if (networkEl) {
-        const { value, suffix } = formatHashPower(Number(data.network_hash) || 0);
-        animateNumber(networkEl, value, suffix);
+        // Empty table/view
+        if (!data) {
+            console.warn("No network stats found. Using fallback data.");
+            fallback();
+            return;
+        }
+
+        // Render live data
+        if (networkEl) {
+            const { value, suffix } =
+                formatHashPower(Number(data.network_hash) || 0);
+            animateNumber(networkEl, value, suffix);
+        }
+
+        if (operatorsEl)
+            animateNumber(operatorsEl, Number(data.operators) || 0);
+
+        if (seasonEl)
+            animateNumber(
+                seasonEl,
+                Number(data.pool_current) || 0,
+                " RTM"
+            );
+
+    } catch (err) {
+        console.error("Unexpected error loading network stats:", err);
+        fallback();
     }
-    if (operatorsEl) animateNumber(operatorsEl, Number(data.operators) || 0);
-    if (seasonEl) animateNumber(seasonEl, Number(data.pool_current) || 0, " RTM");
 }
 
 // ---------- HOMEPAGE: LIVE NETWORK FEED ----------
@@ -105,8 +135,19 @@ async function loadNetworkFeed() {
         .order("created_at", { ascending: false })
         .limit(6);
 
-    if (error || !data) {
-        console.error("Failed to load network feed:", error);
+    if (error || !data || data.length === 0) {
+        console.warn("Using fallback network feed.");
+
+        container.innerHTML = "";
+
+        const demo = [
+            "Operator #918 reached 1 PH/s contribution",
+            "Season reward pool increased",
+            "New contributor joined network",
+            "Season multiplier activated"
+        ];
+
+        demo.forEach(msg => renderFeedItem(container, msg));
         return;
     }
 
@@ -146,11 +187,17 @@ async function loadLeaderboard() {
         .order("rank", { ascending: true })
         .limit(20);
 
-    if (error || !data) {
-        console.error("Failed to load leaderboard:", error);
+    if (error || !data || data.length === 0) {
+        console.warn("No leaderboard data found.");
+        tbody.innerHTML = `
+            <tr>
+                <td colspan="5" style="text-align:center;padding:20px;">
+                    Leaderboard data coming soon
+                </td>
+            </tr>
+        `;
         return;
     }
-
     tbody.innerHTML = "";
     data.forEach(row => {
         const tr = document.createElement("tr");
