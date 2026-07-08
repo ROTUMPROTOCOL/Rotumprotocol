@@ -61,6 +61,49 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        #rtm-live-stats {
+            font-family: inherit;
+        }
+
+        .rtm-stats-summary {
+            margin-bottom: 12px;
+            font-size: 1.05em;
+        }
+
+        .rtm-pool-row {
+            margin-bottom: 10px;
+        }
+
+        .rtm-pool-label {
+            display: block;
+            font-weight: 600;
+        }
+
+        .rtm-pool-value {
+            display: block;
+            font-size: 0.85em;
+            opacity: 0.8;
+        }
+
+        .rtm-pool-bar {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            height: 6px;
+            margin-top: 4px;
+            overflow: hidden;
+        }
+
+        .rtm-pool-bar-fill {
+            background: currentColor;
+            height: 100%;
+        }
+
+        .rtm-stats-updated {
+            font-size: 0.75em;
+            opacity: 0.6;
+            margin-top: 8px;
+        }
     </style>
 </head>
 
@@ -159,39 +202,77 @@
             <div class="card">
                 <div class="tok-layout">
                     <div class="donut-wrap">
-                        <svg width="260" height="260" viewBox="0 0 200 200">
-                            <circle cx="100" cy="100" r="80" fill="none" stroke="rgba(255,255,255,0.05)"
-                                stroke-width="26" />
+                        <svg width="260" height="300" viewBox="0 0 200 230">
+                            <!-- ground shadow -->
+                            <ellipse cx="100" cy="163" rx="90" ry="15" fill="rgba(0,0,0,0.4)" />
 
-                            <!-- Community 60% (301.59) -->
-                            <circle cx="100" cy="100" r="80" fill="none" stroke="#9b7bff" stroke-width="26"
-                                stroke-dasharray="301.59 502.65" stroke-dashoffset="0"
-                                transform="rotate(-90 100 100)" />
+                            <!-- DEPTH / SIDE WALL (darker shades, offset down = extrusion) -->
+                            <g transform="translate(0,16)">
+                                <g transform="translate(100 100) scale(1 0.55) translate(-100 -100)">
+                                    <circle cx="100" cy="100" r="80" fill="none" stroke="rgba(0,0,0,0.35)"
+                                        stroke-width="26" />
+                                    <!-- Community 60% -->
+                                    <circle cx="100" cy="100" r="80" fill="none" stroke="#4d3b80" stroke-width="26"
+                                        stroke-dasharray="301.59 502.65" stroke-dashoffset="0"
+                                        transform="rotate(-90 100 100)" />
+                                    <!-- Treasury 15% -->
+                                    <circle cx="100" cy="100" r="80" fill="none" stroke="#1c7d78" stroke-width="26"
+                                        stroke-dasharray="75.40 502.65" stroke-dashoffset="-301.59"
+                                        transform="rotate(-90 100 100)" />
+                                    <!-- Liquidity 6.25% -->
+                                    <circle cx="100" cy="100" r="80" fill="none" stroke="#5a3399" stroke-width="26"
+                                        stroke-dasharray="31.42 502.65" stroke-dashoffset="-376.99"
+                                        transform="rotate(-90 100 100)" />
+                                    <!-- Core Dev 6.25% -->
+                                    <circle cx="100" cy="100" r="80" fill="none" stroke="#a66d24" stroke-width="26"
+                                        stroke-dasharray="31.42 502.65" stroke-dashoffset="-408.41"
+                                        transform="rotate(-90 100 100)" />
+                                    <!-- Growth & Marketing 6.25% -->
+                                    <circle cx="100" cy="100" r="80" fill="none" stroke="#1d7a58" stroke-width="26"
+                                        stroke-dasharray="31.42 502.65" stroke-dashoffset="-439.83"
+                                        transform="rotate(-90 100 100)" />
+                                    <!-- Team & Advisors 6.25% -->
+                                    <circle cx="100" cy="100" r="80" fill="none" stroke="#a83030" stroke-width="26"
+                                        stroke-dasharray="31.42 502.65" stroke-dashoffset="-471.25"
+                                        transform="rotate(-90 100 100)" />
+                                </g>
+                            </g>
 
-                            <!-- Treasury 15% (75.40) -->
-                            <circle cx="100" cy="100" r="80" fill="none" stroke="#34e0d9" stroke-width="26"
-                                stroke-dasharray="75.40 502.65" stroke-dashoffset="-301.59"
-                                transform="rotate(-90 100 100)" />
+                            <!-- TOP FACE (bright colors, tilted into an ellipse) -->
+                            <g transform="translate(100 100) scale(1 0.55) translate(-100 -100)">
+                                <circle cx="100" cy="100" r="80" fill="none" stroke="rgba(255,255,255,0.05)"
+                                    stroke-width="26" />
 
-                            <!-- Liquidity 6.25% (31.42) -->
-                            <circle cx="100" cy="100" r="80" fill="none" stroke="#a15eff" stroke-width="26"
-                                stroke-dasharray="31.42 502.65" stroke-dashoffset="-376.99"
-                                transform="rotate(-90 100 100)" />
+                                <!-- Community 60% (301.59) -->
+                                <circle cx="100" cy="100" r="80" fill="none" stroke="#9b7bff" stroke-width="26"
+                                    stroke-dasharray="301.59 502.65" stroke-dashoffset="0"
+                                    transform="rotate(-90 100 100)" />
 
-                            <!-- Core Dev 6.25% (31.42) -->
-                            <circle cx="100" cy="100" r="80" fill="none" stroke="#ffb445" stroke-width="26"
-                                stroke-dasharray="31.42 502.65" stroke-dashoffset="-408.41"
-                                transform="rotate(-90 100 100)" />
+                                <!-- Treasury 15% (75.40) -->
+                                <circle cx="100" cy="100" r="80" fill="none" stroke="#34e0d9" stroke-width="26"
+                                    stroke-dasharray="75.40 502.65" stroke-dashoffset="-301.59"
+                                    transform="rotate(-90 100 100)" />
 
-                            <!-- Growth & Marketing 6.25% (31.42) -->
-                            <circle cx="100" cy="100" r="80" fill="none" stroke="#35d29a" stroke-width="26"
-                                stroke-dasharray="31.42 502.65" stroke-dashoffset="-439.83"
-                                transform="rotate(-90 100 100)" />
+                                <!-- Liquidity 6.25% (31.42) -->
+                                <circle cx="100" cy="100" r="80" fill="none" stroke="#a15eff" stroke-width="26"
+                                    stroke-dasharray="31.42 502.65" stroke-dashoffset="-376.99"
+                                    transform="rotate(-90 100 100)" />
 
-                            <!-- Team & Advisors 6.25% (31.42) -->
-                            <circle cx="100" cy="100" r="80" fill="none" stroke="#ff4a4a" stroke-width="26"
-                                stroke-dasharray="31.42 502.65" stroke-dashoffset="-471.25"
-                                transform="rotate(-90 100 100)" />
+                                <!-- Core Dev 6.25% (31.42) -->
+                                <circle cx="100" cy="100" r="80" fill="none" stroke="#ffb445" stroke-width="26"
+                                    stroke-dasharray="31.42 502.65" stroke-dashoffset="-408.41"
+                                    transform="rotate(-90 100 100)" />
+
+                                <!-- Growth & Marketing 6.25% (31.42) -->
+                                <circle cx="100" cy="100" r="80" fill="none" stroke="#35d29a" stroke-width="26"
+                                    stroke-dasharray="31.42 502.65" stroke-dashoffset="-439.83"
+                                    transform="rotate(-90 100 100)" />
+
+                                <!-- Team & Advisors 6.25% (31.42) -->
+                                <circle cx="100" cy="100" r="80" fill="none" stroke="#ff4a4a" stroke-width="26"
+                                    stroke-dasharray="31.42 502.65" stroke-dashoffset="-471.25"
+                                    transform="rotate(-90 100 100)" />
+                            </g>
 
                             <text x="100" y="95" text-anchor="middle" class="donut-center" fill="#f4f3fb" font-size="22"
                                 font-weight="700">1M</text>
@@ -218,6 +299,15 @@
                 </div>
             </div>
         </div>
+
+        <div class="section">
+            <div class="section-head" style="text-align:center;">
+                <h2>Live Distribution</h2>
+            </div>
+            <div class="card">
+                <div id="rtm-live-stats">Loading live supply data...</div>
+            </div>
+        </div>
     </div>
 
     <footer class="site-footer">
@@ -225,6 +315,47 @@
         Additional Minting: <strong>None</strong>
     </footer>
 
+    <script>
+        const LIVE_STATS_API = "https://rotum-protocol.vercel.app/api/stats/live-pools"; // <-- set your real domain
+
+        async function loadLiveStats() {
+            const el = document.getElementById("rtm-live-stats");
+            try {
+                const res = await fetch(LIVE_STATS_API);
+                if (!res.ok) throw new Error("Bad response");
+                const stats = await res.json();
+
+                const poolRows = stats.pools
+                    .map(
+                        (p) => `
+        <div class="rtm-pool-row">
+          <span class="rtm-pool-label">${p.label}</span>
+          <span class="rtm-pool-value">${p.remaining.toLocaleString()} / ${p.allocated.toLocaleString()} RTM remaining</span>
+          <div class="rtm-pool-bar">
+            <div class="rtm-pool-bar-fill" style="width:${p.percentUsed}%"></div>
+          </div>
+        </div>`
+                    )
+                    .join("");
+
+                el.innerHTML = `
+        <div class="rtm-stats-summary">
+          <strong>${stats.percentCirculating}%</strong> of total supply distributed
+          (${stats.totalDistributed.toLocaleString()} / ${stats.totalSupply.toLocaleString()} RTM)
+        </div>
+        ${poolRows}
+        <div class="rtm-stats-updated">Updated ${new Date(stats.updatedAt).toLocaleString()}</div>
+      `;
+            } catch (err) {
+                el.innerHTML = "Live stats temporarily unavailable.";
+                console.error("live-stats fetch failed", err);
+            }
+        }
+
+        loadLiveStats();
+        // Refresh every 60s so the readout stays live without a page reload
+        setInterval(loadLiveStats, 60000);
+    </script>
     <script src="js/script.js"></script>
 </body>
 
